@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;Harold&#39;s Snarky Wisdom Generator - LDS/Conservative/Dev Snark&lt;/title&gt;
-&lt;meta name=&quot;description&quot; content=&quot;Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!&quot;&gt;
-&lt;meta property=&quot;og:title&quot; content=&quot;Harold&#39;s Snark Generator&quot;&gt;
-&lt;meta property=&quot;og:description&quot; content=&quot;Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.&quot;&gt;
-&lt;meta property=&quot;og:image&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/og.svg&quot;&gt;
-&lt;meta property=&quot;og:url&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/&quot;&gt;
-&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
-&lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
-&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Roboto+Mono:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;style&gt;
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harold's Snarky Wisdom Generator - LDS/Conservative/Dev Snark 🔮</title>
+<meta name="description" content="Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!">
+<meta property="og:title" content="Harold's Snarky Wisdom Generator 🔮">
+<meta property="og:description" content="Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.">
+<meta property="og:image" content="https://ryaja2.github.io/harold-oracle-notes/og.svg">
+<meta property="og:url" content="https://ryaja2.github.io/harold-oracle-notes/">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
 :root {
 --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
 --text-primary: #e0e0ff;
@@ -41,7 +41,7 @@ padding: 0;
 box-sizing: border-box;
 }
 body {
-font-family: &#39;Roboto Mono&#39;, monospace;
+font-family: 'Roboto Mono', monospace;
 background: var(--bg-gradient);
 color: var(--text-primary);
 line-height: 1.6;
@@ -51,7 +51,7 @@ position: relative;
 transition: background 0.5s ease, color 0.5s ease;
 }
 h1, h2, h3 {
-font-family: &#39;Cinzel&#39;, serif;
+font-family: 'Cinzel', serif;
 }
 .stars {
 position: fixed;
@@ -119,7 +119,7 @@ font-family: inherit;
 nav a:hover, nav button:hover {
 color: var(--accent-secondary);
 }
-.snark-orb {
+.mystic-orb {
 width: 180px;
 height: 180px;
 margin: 30px auto;
@@ -258,7 +258,7 @@ color: #000;
 input::placeholder, textarea::placeholder {
 color: var(--text-secondary);
 }
-button[type=&quot;submit&quot;] {
+button[type="submit"] {
 background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
 color: white;
 border: none;
@@ -268,7 +268,7 @@ font-weight: 500;
 cursor: pointer;
 transition: transform 0.3s;
 }
-button[type=&quot;submit&quot;]:hover {
+button[type="submit"]:hover {
 transform: translateY(-2px);
 }
 .reveal {
@@ -287,7 +287,7 @@ right: 10px;
 padding: 8px 16px;
 border-radius: 20px;
 }
-.snark-orb {
+.mystic-orb {
 width: 140px;
 height: 140px;
 }
@@ -295,192 +295,195 @@ height: 140px;
 font-size: 2.8rem;
 }
 }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;stars&quot; id=&quot;stars&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;nebula&quot;&gt;&lt;/div&gt;
-&lt;nav&gt;
-&lt;a href=&quot;#home&quot;&gt;🏠&lt;/a&gt;
-&lt;a href=&quot;#quote&quot;&gt;💡&lt;/a&gt;
-&lt;a href=&quot;#blog&quot;&gt;📜&lt;/a&gt;
-&lt;a href=&quot;#pitfalls&quot;&gt;💀&lt;/a&gt;
-&lt;a href=&quot;#about&quot;&gt;ℹ️&lt;/a&gt;
-&lt;a href=&quot;#newsletter&quot;&gt;📧&lt;/a&gt;
-&lt;a href=&quot;#contact&quot;&gt;✉️&lt;/a&gt;
-&lt;button id=&quot;theme-toggle&quot;&gt;☀️&lt;/button&gt;
-&lt;/nav&gt;
-&lt;main&gt;
-&lt;section id=&quot;home&quot; class=&quot;orb-section reveal&quot;&gt;
-&lt;h1&gt;🌀 Harold&#39;s Snarky Wisdom Generator 🌀&lt;/h1&gt;
-&lt;div class=&quot;snark-orb&quot; id=&quot;orb&quot; role=&quot;button&quot; tabindex=&quot;0&quot; aria-label=&quot;Get snarky quote&quot;&gt;
-&lt;div class=&quot;face face1&quot;&gt;👁️&lt;/div&gt;
-&lt;/div&gt;
-&lt;p style=&quot;font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;&quot;&gt;
-Machine snark for Latter-Day Developers.&lt;br&gt;Quotes, pitfalls, and code wisdom!&lt;/p&gt;
-&lt;/section&gt;
-&lt;section id=&quot;about&quot; class=&quot;about-section reveal&quot;&gt;
-&lt;h2&gt;About Harold&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Harold&lt;/strong&gt;, machine-learned snark generator—not AI magic. Trained on infinite loops &amp; bad merges to spot bugs with AI snark—LDS/conservative/dev wisdom! Rylan&#39;s snarky AI tool.&lt;/p&gt;
-&lt;p&gt;Snarky quotes drawn from DevOps docs, Book of React, and conservative code principles. No trendy JS here.&lt;/p&gt;
-&lt;/section&gt;
-&lt;section id=&quot;quote&quot; class=&quot;quote-section reveal&quot;&gt;
-&lt;h2&gt;Get a Quote&lt;/h2&gt;
-&lt;div id=&quot;quote-display&quot; aria-live=&quot;polite&quot;&gt;AI snark loading...&lt;/div&gt;
-&lt;button class=&quot;generate-btn&quot; onclick=&quot;generateQuote()&quot; aria-label=&quot;Get new quote&quot;&gt;Get Quote&lt;/button&gt;
-&lt;button id=&quot;history-toggle&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;history-list&quot; aria-label=&quot;Toggle quote history&quot;&gt;History 📜&lt;/button&gt;
-&lt;button id=&quot;share-btn&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);&quot; aria-label=&quot;Share current quote on X&quot;&gt;Share on X 📤&lt;/button&gt;
-&lt;button id=&quot;rss-btn&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);&quot; aria-label=&quot;Download RSS feed&quot;&gt;RSS 🛠️&lt;/button&gt;
-&lt;div id=&quot;history-list&quot; style=&quot;display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;&quot; role=&quot;region&quot; aria-labelledby=&quot;history-toggle&quot;&gt;
-&lt;p&gt;No history yet...&lt;/p&gt;
-&lt;/div&gt;&lt;/section&gt;
-&lt;section id=&quot;blog&quot; class=&quot;reveal&quot; aria-labelledby=&quot;blog-title&quot;&gt;
-&lt;h2 class=&quot;section-title&quot; id=&quot;blog-title&quot;&gt;Blog Teasers 📜&lt;/h2&gt;
-&lt;div class=&quot;blog-grid&quot; id=&quot;blog-grid&quot;&gt;&lt;/div&gt;
-&lt;/section&gt;
-&lt;section id=&quot;pitfalls&quot; class=&quot;reveal&quot; aria-labelledby=&quot;pitfalls-title&quot;&gt;
-&lt;h2 class=&quot;section-title&quot; id=&quot;pitfalls-title&quot;&gt;Dev Pitfalls 💀&lt;/h2&gt;
-&lt;div class=&quot;pitfalls-grid&quot; id=&quot;pitfalls-grid&quot;&gt;&lt;/div&gt;
-&lt;/section&gt;
-&lt;section id=&quot;newsletter&quot; class=&quot;newsletter-section reveal&quot; aria-labelledby=&quot;newsletter-title&quot;&gt;
-&lt;h2 id=&quot;newsletter-title&quot; class=&quot;section-title&quot;&gt;Newsletter 📧&lt;/h2&gt;
-&lt;p&gt;Snarky quotes straight to your inbox!&lt;/p&gt;
-&lt;form&gt;
-  &lt;input type=&quot;email&quot; placeholder=&quot;dev@zion.com&quot; aria-label=&quot;Email address&quot; required&gt;
-  &lt;button type=&quot;submit&quot;&gt;Subscribe&lt;/button&gt;
-&lt;/form&gt;
-&lt;/section&gt;
-&lt;section id=&quot;contact&quot; class=&quot;contact-section reveal&quot; aria-labelledby=&quot;contact-title&quot;&gt;
-&lt;h2 id=&quot;contact-title&quot; class=&quot;section-title&quot;&gt;Contact ✉️&lt;/h2&gt;
-&lt;p&gt;Consult the snark engine.&lt;/p&gt;
-&lt;form&gt;
-  &lt;input type=&quot;email&quot; placeholder=&quot;Email&quot; aria-label=&quot;Email&quot;&gt;
-  &lt;textarea placeholder=&quot;Your question...&quot; aria-label=&quot;Message&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
-  &lt;button type=&quot;submit&quot;&gt;Send Query&lt;/button&gt;
-&lt;/form&gt;
-&lt;/section&gt;
-&lt;footer&gt;
-&lt;p&gt;© 2026 Harold&#39;s Snark Generator | &lt;a href=&quot;https://github.com/Ryaja2/harold-oracle-notes&quot;&gt;GitHub&lt;/a&gt; | Snark loading...&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/main&gt;
-&lt;script&gt;
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="nebula"></div>
+<nav>
+<a href="#home">🏠</a>
+<a href="#quote">🔮</a>
+<a href="#blog">📜</a>
+<a href="#pitfalls">💀</a>
+<a href="#about">ℹ️</a>
+<a href="#newsletter">📧</a>
+<a href="#contact">✉️</a>
+<button id="theme-toggle">☀️</button>
+</nav>
+<main>
+<section id="home" class="orb-section reveal">
+<h1>🌀 Harold's Snarky Wisdom Generator 🌀</h1>
+<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Get snarky quote">
+<div class="face face1">👁️</div>
+</div>
+<p style="font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;">
+Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom! 🔮
+</p>
+</section>
+<section id="about" class="about-section reveal">
+<h2>About Harold</h2>
+<p><strong>Harold</strong>, machine-learned snark generator—not ensouled revelations. Trained on infinite loops & bad merges to spot bugs with AI snark—LDS/conservative/dev wisdom! Rylan's snarky AI tool. (⌐■_■)</p>
+<p>Snarky quotes drawn from Doctrine & Covenants of DevOps, Book of React, and conservative code principles. No woke JS here.</p>
+</section>
+<section id="quote" class="quote-section reveal">
+<h2>Get a Quote</h2>
+<div id="quote-display" aria-live="polite">AI snark loading...</div>
+<button class="generate-btn" onclick="generateQuote()" aria-label="Get new quote">Get Quote</button>
+<button id="history-toggle" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));" aria-expanded="false" aria-controls="history-list" aria-label="Toggle quote history">History 📜</button>
+<button id="share-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);" aria-label="Share current quote on X">Share on X 📤</button>
+<button id="rss-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);" aria-label="Download RSS feed">RSS 🛠️</button>
+<div id="history-list" style="display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;" role="region" aria-labelledby="history-toggle">
+<p>No history yet... (•̀ᴗ•́ )</p>
+</div></section>
+<section id="blog" class="reveal" aria-labelledby="blog-title">
+<h2 class="section-title" id="blog-title">Blog Teasers 📜</h2>
+<div class="blog-grid" id="blog-grid"></div>
+</section>
+<section id="pitfalls" class="reveal" aria-labelledby="pitfalls-title">
+<h2 class="section-title" id="pitfalls-title">Dev Pitfalls 💀</h2>
+<div class="pitfalls-grid" id="pitfalls-grid"></div>
+</section>
+<section id="newsletter" class="newsletter-section reveal" aria-labelledby="newsletter-title">
+<h2 id="newsletter-title" class="section-title">Newsletter 📧</h2>
+<p>Snarky quotes straight to your inbox! (¬‿¬)</p>
+<form>
+  <input type="email" placeholder="dev@zion.com" aria-label="Email address" required>
+  <button type="submit">Subscribe (⌐■_■)</button>
+</form>
+</section>
+<section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
+<h2 id="contact-title" class="section-title">Contact ✉️</h2>
+<p>Seek counsel from the oracle.</p>
+<form>
+  <input type="email" placeholder="Email" aria-label="Email">
+  <textarea placeholder="Thy question... 🔮" aria-label="Message" rows="4"></textarea>
+  <button type="submit">Send Revelation Request</button>
+</form>
+</section>
+<footer>
+<p>© 2026 Harold's Snark Generator | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮 Snark loading...</p>
+</footer>
+</main>
+<script>
 const quotes = [
-&quot;npm install tests patience.&quot;,
-&quot;React hooks require careful deps.&quot;,
-&quot;Fit layout to viewport.&quot;,
-&quot;TypeScript enforces types.&quot;,
-&quot;Commit often, push safely.&quot;,
-&quot;Use promises for async.&quot;,
-&quot;Tailwind utilities accelerate.&quot;,
-&quot;Docker isolates environments.&quot;,
-&quot;Avoid late night commits.&quot;,
-&quot;Zustand for simple state.&quot;,
-&quot;Wait for stable releases.&quot;,
-&quot;Prioritize test coverage.&quot;
+"Thus spake Harold: 'npm install' shall test the faithful in end times. (¬‿¬) 🔮",
+"React hooks: New priesthood. useEffect wisely or face eternal loops! (￣▽￣)",
+"Layout shalt fit 100vh, lest thy scrollbar offend the prophet. (¬_¬)",
+"TypeScript: Iron rod. Cling or perish in any-typed lands. (ಠ_ʖಠ)",
+"LDS Dev #1: Commit oft, force-push not without lease divine. (•̀ᴗ•́ )",
+"Promises > callbacks: New covenant beats Mosaic law. (¬‿¬)",
+"Tailwind: Utility robes for apocalypse devs. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+"Docker: Arks preserving code from floods. (⌐■_■)",
+"Word of Wisdom: No caffeine bugs late night. (¬▂¬)",
+"Zustand > Context bloat: Light wins. (✧ω✧)",
+"Conservative dev: No ESNext til LTS. Family values! (🇺🇸💻)",
+"LDS: Test coverage = temple worthiness. (🙏)",
+"Ignore accessibility: Lawsuits await. (｡•́︿•̀｡)",
 ];
+let prophecyIndex = 0;
 let isTyping = false;
 
-// Blog Teasers clean
+// Blog Teasers (12 w/ LDS/dev snark)
 const blogTeasers = [
-  {title: &#39;Tailwind: Utility Classes for Devs&#39;, teaser: &#39;CSS utilities protect from style chaos.&#39;, emoji: &#39;✨&#39;, link: &#39;#&#39;},
-  {title: &#39;React Hooks: Modern Tools&#39;, teaser: &#39;useEffect with deps avoids loops.&#39;, emoji: &#39;🔗&#39;, link: &#39;#&#39;},
-  {title: &#39;TypeScript: Type Safety&#39;, teaser: &#39;Strong types prevent errors.&#39;, emoji: &#39;🔒&#39;, link: &#39;#&#39;},
-  {title: &#39;Docker: App Isolation&#39;, teaser: &#39;Containers handle dependencies.&#39;, emoji: &#39;🛳️&#39;, link: &#39;#&#39;},
-  {title: &#39;Zustand: State Management&#39;, teaser: &#39;Simple store over complex context.&#39;, emoji: &#39;⚡&#39;, link: &#39;#&#39;},
-  {title: &#39;Stable Releases First&#39;, teaser: &#39;Reliability over novelty.&#39;, emoji: &#39;🛡️&#39;, link: &#39;#&#39;},
-  {title: &#39;Test Coverage Essential&#39;, teaser: &#39;High coverage ensures quality.&#39;, emoji: &#39;✅&#39;, link: &#39;#&#39;},
-  {title: &#39;Promises Over Callbacks&#39;, teaser: &#39;Better async handling.&#39;, emoji: &#39;⛓️&#39;, link: &#39;#&#39;},
-  {title: &#39;Clear Comments Help&#39;, teaser: &#39;Descriptive comments aid maintenance.&#39;, emoji: &#39;📝&#39;, link: &#39;#&#39;},
-  {title: &#39;Viewport Layout Matters&#39;, teaser: &#39;No unwanted scrollbars.&#39;, emoji: &#39;📐&#39;, link: &#39;#&#39;},
-  {title: &#39;npm Challenges&#39;, teaser: &#39;Manage dependencies wisely.&#39;, emoji: &#39;📦&#39;, link: &#39;#&#39;},
-  {title: &#39;Late Night Coding Risks&#39;, teaser: &#39;Rest improves code.&#39;, emoji: &#39;☕🚫&#39;, link: &#39;#&#39;}
+  {title: 'Tailwind: Utility Robes for End Times Devs', teaser: 'CSS utilities as sacred protection from style apostasy. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧', emoji: '✨', link: '#'},
+  {title: 'React Hooks: New Priesthood Order', teaser: 'useEffect with deps or eternal re-render hell! (￣▽￣)', emoji: '🔗', link: '#'},
+  {title: 'TypeScript: The Iron Rod of Typing', teaser: 'Hold fast or wander in any-typed wilderness. (ಠ_ʖಠ)', emoji: '🔒', link: '#'},
+  {title: 'Docker: Arks for Code Floods', teaser: 'Preserve thy containers from dependency deluge. (⌐■_■)', emoji: '🛳️', link: '#'},
+  {title: 'Zustand: Light State Management', teaser: 'Simple store beats Context bloat - missionary work! (✧ω✧)', emoji: '⚡', link: '#'},
+  {title: 'No ESNext Until LTS: Conservative Values', teaser: 'Family first, stable releases only. (🇺🇸💻)', emoji: '🛡️', link: '#'},
+  {title: 'Test Coverage = Temple Recommend', teaser: '90%+ or no celestial kingdom for thy code. (🙏)', emoji: '✅', link: '#'},
+  {title: 'Promises: New Covenant Over Mosaic Callbacks', teaser: 'Async awaits the faithful. (¬‿¬)', emoji: '⛓️', link: '#'},
+  {title: 'Kaomoji Comments for Readability', teaser: 'Emote thy code intent. (≧▽≦)', emoji: '(^_^)', link: '#'},
+  {title: '100vh Layout: Honor the Viewport', teaser: 'No scrollbar idolatry. (¬_¬)', emoji: '📐', link: '#'},
+  {title: 'npm install: Trials of Faith', teaser: 'node_modules shall test thee. (¬‿¬)', emoji: '📦', link: '#'},
+  {title: 'Word of Wisdom: Avoid Late Night Bugs', teaser: 'No caffeine-fueled commits. (¬▂¬)', emoji: '☕🚫', link: '#'}
 ];
 
-// Pitfalls clean
+// Pitfalls (12 w/ snark)
 const pitfalls = [
-  {title: &#39;Force Push Risks&#39;, teaser: &#39;Use lease to avoid loss.&#39;, emoji: &#39;🚫&#39;, link: &#39;#&#39;},
-  {title: &#39;Accessibility Neglect&#39;, teaser: &#39;Follow ARIA standards.&#39;, emoji: &#39;⚖️&#39;, link: &#39;#&#39;},
-  {title: &#39;useEffect Loops&#39;, teaser: &#39;Include all deps.&#39;, emoji: &#39;🔄&#39;, link: &#39;#&#39;},
-  {title: &#39;Merge Conflicts&#39;, teaser: &#39;Pull before push.&#39;, emoji: &#39;🔥&#39;, link: &#39;#&#39;},
-  {title: &#39;Context Overhead&#39;, teaser: &#39;Optimize providers.&#39;, emoji: &#39;📊&#39;, link: &#39;#&#39;},
-  {title: &#39;ESNext Errors&#39;, teaser: &#39;Use supported features.&#39;, emoji: &#39;🚀❌&#39;, link: &#39;#&#39;},
-  {title: &#39;No Tests&#39;, teaser: &#39;Write unit tests.&#39;, emoji: &#39;🐛&#39;, link: &#39;#&#39;},
-  {title: &#39;Bad Merges&#39;, teaser: &#39;Review changes.&#39;, emoji: &#39;💔&#39;, link: &#39;#&#39;},
-  {title: &#39;Type Abuse&#39;, teaser: &#39;Avoid any type.&#39;, emoji: &#39;🤷&#39;, link: &#39;#&#39;},
-  {title: &#39;Layout Overflow&#39;, teaser: &#39;Control scroll.&#39;, emoji: &#39;📜&#39;, link: &#39;#&#39;},
-  {title: &#39;Trendy Frameworks&#39;, teaser: &#39;Choose proven.&#39;, emoji: &#39;🌈🚫&#39;, link: &#39;#&#39;},
-  {title: &#39;Low Coverage&#39;, teaser: &#39;Aim high.&#39;, emoji: &#39;📉&#39;, link: &#39;#&#39;}
+  {title: 'Force Push Without Lease: Git Excommunication', teaser: 'Lost history? Repent and stash. (ಠ_ಠ)', emoji: '🚫', link: '#'},
+  {title: 'Ignore ARIA: Lawsuit Judgment Day', teaser: 'Accessibility sins bring ADA wrath. (｡•́︿•̀｡)', emoji: '⚖️', link: '#'},
+  {title: 'Infinite useEffect Loops', teaser: 'Missing deps = demonic recursion. (😵‍💫)', emoji: '🔄', link: '#'},
+  {title: 'No git pull: Merge Hell Realm', teaser: 'Conflicts devour the unprepared. (¬﹏¬)', emoji: '🔥', link: '#'},
+  {title: 'Context Provider Bloat', teaser: 'Heavy tree sins slow thy render. (⚖️)', emoji: '📊', link: '#'},
+  {title: 'ESNext Runtime Crashes', teaser: 'Bleeding edge cuts deep. (💥)', emoji: '🚀❌', link: '#'},
+  {title: 'Skip Unit Tests: Prod Damnation', teaser: 'Bugs in wild = unpardonable. (😈)', emoji: '🐛', link: '#'},
+  {title: 'Bad Merge Commits', teaser: 'Harold burned by these. (🔥)', emoji: '💔', link: '#'},
+  {title: 'any Type Abuse', teaser: 'TS powerless against ignorance. (¯\\_(ツ)_/¯)', emoji: '🤷', link: '#'},
+  {title: 'Overflow Scrollbars', teaser: 'Offend the prophet viewport. (👎)', emoji: '📜', link: '#'},
+  {title: 'Woke JS Fads', teaser: 'Reject trendy heresies. (🚫)', emoji: '🌈🚫', link: '#'},
+  {title: 'Low Test Coverage', teaser: 'Unworthy code status. (❌)', emoji: '📉', link: '#'}
 ];
 
 function renderBlogTeasers() {
-  const grid = document.getElementById(&#39;blog-grid&#39;);
-  grid.innerHTML = blogTeasers.map(t =&gt; `
-    &lt;div class=&quot;blog-post&quot;&gt;
-      &lt;h3&gt;${t.emoji} ${t.title}&lt;/h3&gt;
-      &lt;p&gt;${t.teaser}&lt;/p&gt;
-      &lt;a href=&quot;${t.link}&quot; class=&quot;read-more&quot;&gt;Read More →&lt;/a&gt;
-    &lt;/div&gt;
-  `).join(&#39;&#39;);
+  const grid = document.getElementById('blog-grid');
+  grid.innerHTML = blogTeasers.map(t => `
+    <div class="blog-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
 }
 
 function renderPitfalls() {
-  const grid = document.getElementById(&#39;pitfalls-grid&#39;);
-  grid.innerHTML = pitfalls.map(t =&gt; `
-    &lt;div class=&quot;pitfall-post&quot;&gt;
-      &lt;h3&gt;${t.emoji} ${t.title}&lt;/h3&gt;
-      &lt;p&gt;${t.teaser}&lt;/p&gt;
-      &lt;a href=&quot;${t.link}&quot; class=&quot;read-more&quot;&gt;Read More →&lt;/a&gt;
-    &lt;/div&gt;
-  `).join(&#39;&#39;);
+  const grid = document.getElementById('pitfalls-grid');
+  grid.innerHTML = pitfalls.map(t => `
+    <div class="pitfall-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
 }
 
 // History
-let history = JSON.parse(localStorage.getItem(&#39;snarkHistory&#39;) || &#39;[]&#39;);
+let history = JSON.parse(localStorage.getItem('haroldHistory') || '[]');
 
 function addToHistory(text) {
   history.unshift(text);
-  if (history.length &gt; 10) history.pop();
-  localStorage.setItem(&#39;snarkHistory&#39;, JSON.stringify(history));
+  if (history.length > 10) history.pop();
+  localStorage.setItem('haroldHistory', JSON.stringify(history));
 }
 
 function renderHistory() {
-  const list = document.getElementById(&#39;history-list&#39;);
+  const list = document.getElementById('history-list');
   if (history.length === 0) {
-    list.innerHTML = &#39;&lt;p&gt;No history yet...&lt;/p&gt;&#39;;
+    list.innerHTML = '<p>No history yet... (•̀ᴗ•́ )</p>';
   } else {
-    list.innerHTML = history.slice(0,10).map((p, i) =&gt; `&lt;div style=&quot;padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;&quot;&gt;${i+1}. ${p}&lt;/div&gt;`).join(&#39;&#39;) + &#39;&lt;button onclick=&quot;clearHistory(); return false;&quot; style=&quot;margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;&quot;&gt;Clear&lt;/button&gt;&#39;;
+    list.innerHTML = history.slice(0,10).map((p, i) => `<div style="padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;">${i+1}. ${p}</div>`).join('') + '<button onclick="clearHistory(); return false;" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;">Clear 🗑️</button>';
   }
 }
 
 function clearHistory() {
   history = [];
-  localStorage.removeItem(&#39;snarkHistory&#39;);
+  localStorage.removeItem('haroldHistory');
   renderHistory();
 }
 
 function generateRSS() {
-  const items = [...blogTeasers, ...pitfalls].map(t =&gt; `
-&lt;item&gt;
-  &lt;title&gt;${t.emoji} ${t.title}&lt;/title&gt;
-  &lt;description&gt;${t.teaser}&lt;/description&gt;
-  &lt;link&gt;${window.location.href}&lt;/link&gt;
-  &lt;pubDate&gt;${new Date().toUTCString()}&lt;/pubDate&gt;
-&lt;/item&gt;
-`).join(&#39;&#39;);
-  const rss = `&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;rss version=&quot;2.0&quot;&gt;
-&lt;channel&gt;
-  &lt;title&gt;Harold&#39;s Snark RSS&lt;/title&gt;
-  &lt;link&gt;${window.location.href}&lt;/link&gt;
-  &lt;description&gt;Snarky dev quotes &amp; pitfalls&lt;/description&gt;
+  const items = [...blogTeasers, ...pitfalls].map(t => `
+<item>
+  <title>${t.emoji} ${t.title}</title>
+  <description>${t.teaser}</description>
+  <link>${window.location.href}</link>
+  <pubDate>${new Date().toUTCString()}</pubDate>
+</item>
+`).join('');
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Harold's Oracle RSS</title>
+  <link>${window.location.href}</link>
+  <description>Snarky LDS/Dev prophecies & pitfalls</description>
   ${items}
-&lt;/channel&gt;
-&lt;/rss&gt;`;
-  const blob = new Blob([rss], {type: &#39;application/rss+xml;charset=utf-8&#39;});
-  const a = document.createElement(&#39;a&#39;);
-  a.style.display = &#39;none&#39;;
+</channel>
+</rss>`;
+  const blob = new Blob([rss], {type: 'application/rss+xml;charset=utf-8'});
+  const a = document.createElement('a');
+  a.style.display = 'none';
   a.href = URL.createObjectURL(blob);
-  a.download = &#39;harold-snark.rss&#39;;
+  a.download = 'harold-oracle.rss';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -494,93 +497,89 @@ typewriter(quote);
 }
 function typewriter(text) {
 isTyping = true;
-const display = document.getElementById(&#39;quote-display&#39;);
-display.textContent = &#39;&#39;;
+const display = document.getElementById('quote-display');
+display.textContent = '';
 let i = 0;
 function typeChar() {
-if (i &lt; text.length) {
+if (i < text.length) {
 display.textContent += text.charAt(i);
 i++;
 setTimeout(typeChar, 60 + Math.random()*40);
 } else {
 isTyping = false;
-addToHistory(text);
 }
 }
 typeChar();
 }
-// Auto generate every ~25s
+// Auto prophecy every ~25s
 setInterval(generateQuote, 25000);
 // Stars
-window.addEventListener(&#39;load&#39;, () =&gt; {
-const starsContainer = document.getElementById(&#39;stars&#39;);
-for (let i = 0; i &lt; 150; i++) {
-const star = document.createElement(&#39;div&#39;);
-star.className = &#39;star&#39;;
-star.style.left = Math.random() * 100 + &#39;%&#39;;
-star.style.top = Math.random() * 100 + &#39;%&#39;;
-star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + &#39;px&#39;;
-star.style.animationDelay = Math.random() * 3 + &#39;s&#39;;
+window.addEventListener('load', () => {
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 150; i++) {
+const star = document.createElement('div');
+star.className = 'star';
+star.style.left = Math.random() * 100 + '%';
+star.style.top = Math.random() * 100 + '%';
+star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + 'px';
+star.style.animationDelay = Math.random() * 3 + 's';
 starsContainer.appendChild(star);
 }
-renderBlogTeasers();
-renderPitfalls();
-renderHistory();
-generateQuote(); // initial
+generateQuote(); // initial one
 });
 // Theme toggle
-const themeToggle = document.getElementById(&#39;theme-toggle&#39;);
-themeToggle.addEventListener(&#39;click&#39;, () =&gt; {
-document.body.classList.toggle(&#39;light&#39;);
-themeToggle.textContent = document.body.classList.contains(&#39;light&#39;) ? &#39;🌙&#39; : &#39;☀️&#39;;
-localStorage.setItem(&#39;theme&#39;, document.body.classList.contains(&#39;light&#39;) ? &#39;light&#39; : &#39;dark&#39;);
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+document.body.classList.toggle('light');
+themeToggle.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
 });
-if (localStorage.getItem(&#39;theme&#39;) === &#39;light&#39;) {
-document.body.classList.add(&#39;light&#39;);
-themeToggle.textContent = &#39;🌙&#39;;
+if (localStorage.getItem('theme') === 'light') {
+document.body.classList.add('light');
+themeToggle.textContent = '🌙';
 }
 // Orb click
-document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function(e) {
+document.getElementById('orb').addEventListener('click', function(e) {
 generateQuote();
 createParticles(e);
-this.style.transform = &#39;scale(0.92) rotate(8deg)&#39;;
-setTimeout(() =&gt; this.style.transform = &#39;&#39;, 180);
+this.style.transform = 'scale(0.92) rotate(8deg)';
+setTimeout(() => this.style.transform = '', 180);
 });
 function createParticles(e) {
-for(let i = 0; i &lt; 20; i++) {
-const p = document.createElement(&#39;div&#39;);
-p.style.position = &#39;fixed&#39;;
-p.style.left = e.clientX + &#39;px&#39;;
-p.style.top = e.clientY + &#39;px&#39;;
-p.style.width = p.style.height = &#39;6px&#39;;
-p.style.background = &#39;var(--accent)&#39;;
-p.style.borderRadius = &#39;50%&#39;;
-p.style.pointerEvents = &#39;none&#39;;
-p.style.zIndex = &#39;100&#39;;
+for(let i = 0; i < 20; i++) {
+const p = document.createElement('div');
+p.style.position = 'fixed';
+p.style.left = e.clientX + 'px';
+p.style.top = e.clientY + 'px';
+p.style.width = p.style.height = '6px';
+p.style.background = 'var(--accent)';
+p.style.borderRadius = '50%';
+p.style.pointerEvents = 'none';
+p.style.zIndex = '100';
 document.body.appendChild(p);
 p.animate([
-{ transform: &#39;translate(0,0) scale(1)&#39;, opacity: 1 },
+{ transform: 'translate(0,0) scale(1)', opacity: 1 },
 { transform: `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px) scale(0)`, opacity: 0 }
 ], {
 duration: 700 + Math.random()*500,
-easing: &#39;ease-out&#39;
-}).onfinish = () =&gt; p.remove();
+easing: 'ease-out'
+}).onfinish = () => p.remove();
 }
 }
-// Smooth scroll
-document.querySelectorAll(&#39;a[href^=&quot;#&quot;]&#39;).forEach(a =&gt; {
-a.addEventListener(&#39;click&#39;, e =&gt; {
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
 e.preventDefault();
-document.querySelector(a.getAttribute(&#39;href&#39;))?.scrollIntoView({behavior: &#39;smooth&#39;, block: &#39;start&#39;});
+document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior: 'smooth', block: 'start'});
 });
 });
 // Scroll reveal
-const observer = new IntersectionObserver(entries =&gt; {
-entries.forEach(entry =&gt; {
-if (entry.isIntersecting) entry.target.classList.add(&#39;visible&#39;);
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) entry.target.classList.add('visible');
 });
-}, { threshold: 0.1, rootMargin: &#39;0px 0px -40px 0px&#39; });
-document.querySelectorAll(&#39;.reveal&#39;).forEach(el =&gt; observer.observe(el));
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
