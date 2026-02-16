@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harold's Snarky Wisdom Generator - LDS/Conservative/Dev Snark 🔮</title>
+<title>Harold's Snarky Quotes v8 - LDS/Conservative/Dev Snark</title>
 <meta name="description" content="Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!">
-<meta property="og:title" content="Harold's Snarky Wisdom Generator 🔮">
+<meta property="og:title" content="Harold's Snarky Quotes v8">
 <meta property="og:description" content="Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.">
 <meta property="og:image" content="https://ryaja2.github.io/harold-oracle-notes/og.svg">
 <meta property="og:url" content="https://ryaja2.github.io/harold-oracle-notes/">
@@ -102,23 +102,23 @@ button[type="submit"]:hover { transform: translateY(-2px); }
 </nav>
 <main>
 <section id="home" class="reveal">
-<h1>🌀 Harold's Snarky Wisdom Generator 🌀</h1>
-<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Get snarky quote">
-<div class="face">👁️</div>
+<h1>Harold's Snarky Quotes</h1>
+<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Generate snark">
+<div class="face">🤖</div>
 </div>
 <p style="font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;">
-Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom! 🔮
+Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom!
 </p>
 </section>
 <section id="about" class="about-section reveal">
 <h2>About Harold</h2>
-<p><strong>Harold</strong>, machine-learned snark generator—not ensouled revelations. Trained on infinite loops & bad merges to spot bugs with AI snark—LDS/conservative/dev wisdom! Rylan's snarky AI tool. (⌐■_■)</p>
+<p><strong>Harold</strong> is an AI snark generator for LDS/conservative/dev wisdom. Trained on infinite loops & bad merges to spot bugs. Rylan's tool.</p>
 <p>Snarky quotes drawn from Doctrine & Covenants of DevOps, Book of React, and conservative code principles. No woke JS here.</p>
 </section>
 <section id="quote" class="quote-section reveal">
 <h2>Get a Quote</h2>
 <div id="quote-display" aria-live="polite">AI snark loading...</div>
-<button class="generate-btn" onclick="generateQuote()">Get Quote</button>
+<button class="generate-btn" onclick="generateQuote()">Generate Snark</button>
 <button id="history-toggle" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));" aria-expanded="false" aria-controls="history-list">History 📜</button>
 <button id="share-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);">Share on X 📤</button>
 <button id="rss-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);">RSS 🛠️</button>
@@ -150,7 +150,7 @@ Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom! �
 <p>Snarky quotes straight to your inbox! (¬‿¬)</p>
 <form>
   <input type="email" placeholder="dev@zion.com" required>
-  <button type="submit">Subscribe (⌐■_■)</button>
+  <button type="submit">Subscribe</button>
 </form>
 </section>
 <section id="contact" class="contact-section reveal">
@@ -158,17 +158,17 @@ Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom! �
 <p>Seek counsel from the oracle.</p>
 <form>
   <input type="email" placeholder="Email">
-  <textarea placeholder="Thy question... 🔮" rows="4"></textarea>
-  <button type="submit">Send Revelation Request</button>
+  <textarea placeholder="Your question..." rows="4"></textarea>
+  <button type="submit">Send Message</button>
 </form>
 </section>
 <footer>
-<p>© 2026 Harold's Snarky Wisdom Generator v7-features | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮</p>
+<p>© 2026 Harold's Snarky Quotes v8-purged | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮</p>
 </footer>
 </main>
 <script>
 const quotes = [
-"Thus spake Harold: 'npm install' shall test the faithful in end times. (¬‿¬) 🔮",
+"Thus spake Harold: 'npm install' shall test the faithful in end times.",
 "React hooks: New priesthood. useEffect wisely or face eternal loops! (￣▽￣)",
 "Layout shalt fit 100vh, lest thy scrollbar offend the prophet. (¬_¬)",
 "TypeScript: Iron rod. Cling or perish in any-typed lands. (ಠ_ʖಠ)",
@@ -207,8 +207,8 @@ function addToHistory(text) { history.unshift(text); if (history.length > 20) hi
 function renderHistory() { const list = document.getElementById('history-list'); if (history.length === 0) { list.innerHTML = '<p>No history yet... (•̀ᴗ•́ )</p>'; } else { list.innerHTML = history.slice(0,20).map((p, i) => `<div style="padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;">${i+1}. ${p}</div>`).join('') + '<button onclick="clearHistory()" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;">Purge History 🗑️</button><button onclick="exportCSV()" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--accent);color:white;border:none;border-radius:5px;cursor:pointer;margin-left:10px;">Export CSV 📊</button>'; } }
 function clearHistory() { if (confirm('Purge all saved quotes?')) { history = []; localStorage.removeItem('haroldHistory'); renderHistory(); } }
 function exportCSV() { if (history.length === 0) return alert('No history!'); const csv = 'Quote\n' + history.slice(0,20).map(q => `"${q.replace(/"/g, '""')}"`).join('\n'); const blob = new Blob([csv], {type: 'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'harold-quotes.csv'; a.click(); URL.revokeObjectURL(url); }
-function shareQuote() { const quote = document.getElementById('quote-display').textContent.trim(); if (!quote || quote === 'AI snark loading...') return; const text = encodeURIComponent(quote + ' 🔮 #HaroldOracle'); window.open('https://x.com/intent/tweet?text=' + text, '_blank'); }
-function generateRSS() { /* same as before */ const items = [...blogTeasers, ...pitfalls].map(t => `<item><title>${t.emoji} ${t.title}</title><description>${t.teaser}</description><link>${window.location.href}</link><pubDate>${new Date().toUTCString()}</pubDate></item>`).join(''); const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>Harold\\'s Oracle RSS</title><link>${window.location.href}</link><description>Snarky LDS/Dev</description>${items}</channel></rss>`; const blob = new Blob([rss], {type: 'application/rss+xml'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'harold-oracle.rss'; a.click(); }
+function shareQuote() { const quote = document.getElementById('quote-display').textContent.trim(); if (!quote || quote === 'AI snark loading...') return; const text = encodeURIComponent(quote + ' #HaroldSnark'); window.open('https://x.com/intent/tweet?text=' + text, '_blank'); }
+function generateRSS() { /* same as before */ const items = [...blogTeasers, ...pitfalls].map(t => `<item><title>${t.emoji} ${t.title}</title><description>${t.teaser}</description><link>${window.location.href}</link><pubDate>${new Date().toUTCString()}</pubDate></item>`).join(''); const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>Harold\\'s Oracle RSS</title><link>${window.location.href}</link><description>Snarky LDS/Dev</description>${items}</channel></rss>`; const blob = new Blob([rss], {type: 'application/rss+xml'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'harold-snark.rss'; a.click(); }
 function generateQuote() { if (isTyping) return; const quote = quotes[Math.floor(Math.random() * quotes.length)]; addToHistory(quote); typewriter(quote); }
 function typewriter(text) { isTyping = true; const display = document.getElementById('quote-display'); display.textContent = ''; let i = 0; const typeChar = () => { if (i < text.length) { display.textContent += text[i++]; setTimeout(typeChar, 60 + Math.random()*40); } else isTyping = false; }; typeChar(); }
 function initCarousel() { const track = document.getElementById('carousel-track'); track.innerHTML = devTips.map(tip => `<div class="carousel-slide">${tip}</div>`).join(''); const dotsContainer = document.getElementById('carousel-dots'); dotsContainer.innerHTML = devTips.map((_, i) => `<span data-slide="${i}" onclick="goToSlide(${i})"></span>`).join(''); updateCarousel(); autoSlideInterval = setInterval(nextSlide, 4000); }
@@ -242,6 +242,10 @@ themeToggle.onclick = () => { document.body.classList.toggle('light'); themeTogg
 if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); themeToggle.textContent = '🌙'; }
  // orb, particles, smooth scroll, observer code abbreviated for brevity, assume same
 const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>, rootMargin: '0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
