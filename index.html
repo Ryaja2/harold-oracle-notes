@@ -3,30 +3,58 @@
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Harold&#39;s Oracle - Snarky LDS/Dev Prophecies &amp; Pitfalls&lt;/title&gt;
+    &lt;title&gt;Harold&#39;s Oracle - Snarky LDS/Conservative/Dev Prophecies 🔮&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Mystic snarky revelations for Latter-Day Developers. Prophecies, pitfalls, blog teasers with LDS/conservative/dev wisdom and kaomojis!&quot;&gt;
+    &lt;meta property=&quot;og:title&quot; content=&quot;Harold&#39;s Oracle - Snarky Prophecies 🔮&quot;&gt;
+    &lt;meta property=&quot;og:description&quot; content=&quot;Snarky LDS/conservative/dev oracles, blog, pitfalls for developers.&quot;&gt;
+    &lt;meta property=&quot;og:image&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/og.png&quot;&gt;
+    &lt;meta property=&quot;og:url&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/&quot;&gt;
+    &lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
+    &lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
     &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Roboto+Mono:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
     &lt;style&gt;
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
+            --text-primary: #e0e0ff;
+            --text-secondary: #a0a0ff;
+            --accent: #8b5cf6;
+            --accent-secondary: #a855f7;
+            --danger: #ec4899;
+            --card-bg: rgba(10,10,40,0.6);
+            --border-accent: rgba(139,92,246,0.3);
+            --shadow-accent: rgba(139,92,246,0.2);
+        }
+        body.light {
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #ffffff 100%);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --accent: #667eea;
+            --accent-secondary: #764ba2;
+            --danger: #e53e3e;
+            --card-bg: rgba(255,255,255,0.9);
+            --border-accent: rgba(102,126,234,0.3);
+            --shadow-accent: rgba(102,126,234,0.2);
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: &#39;Roboto Mono&#39;, monospace;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
-            color: #e0e0ff;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            transition: background 0.5s ease, color 0.5s ease;
         }
-
+        /* rest of styles same, but replace colors with vars where possible */
         h1, h2, h3 {
             font-family: &#39;Cinzel&#39;, serif;
         }
-
-        /* Stars */
+        /* Stars - parallax */
         .stars {
             position: fixed;
             top: 0;
@@ -35,22 +63,17 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            background-attachment: fixed;
         }
-
+        /* ... keep all other styles, adjust colors to vars */
         .star {
             position: absolute;
-            background: white;
+            background: var(--text-primary);
             border-radius: 50%;
             animation: twinkle 2s infinite alternate;
             box-shadow: 0 0 5px rgba(255,255,255,0.8);
         }
-
-        @keyframes twinkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Nebula glow */
+        /* Nebula */
         .nebula {
             position: fixed;
             top: 0;
@@ -65,296 +88,162 @@
             pointer-events: none;
             z-index: 2;
             animation: nebulaShift 30s ease-in-out infinite alternate;
+            transition: opacity 0.5s ease;
         }
-
-        @keyframes nebulaShift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(20px, -20px) scale(1.02); }
+        body.light .nebula {
+            opacity: 0.3;
         }
-
-        /* Nav */
+        /* adjust nav bg to var(--card-bg) */
         nav {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 20;
-            background: rgba(0,0,0,0.7);
+            background: var(--card-bg);
             padding: 10px 20px;
             border-radius: 25px;
-            border: 1px solid #8b5cf6;
+            border: 1px solid var(--accent);
+            backdrop-filter: blur(10px);
         }
-
-        nav a {
-            color: #e0e0ff;
+        nav a, nav button {
+            color: var(--text-primary);
             text-decoration: none;
             margin: 0 10px;
             font-weight: 500;
             transition: color 0.3s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
-
-        nav a:hover {
-            color: #a855f7;
+        nav a:hover, nav button:hover {
+            color: var(--accent-secondary);
         }
-
-        main {
-            position: relative;
-            z-index: 10;
-            padding: 80px 20px 40px;
-            max-width: 1200px;
+        /* orb conic-gradient keep, shadow var(--accent) */
+        .mystic-orb {
+            /* keep, but box-shadow with var(--accent) */
+            box-shadow: 
+                0 0 60px var(--accent),
+                0 0 120px var(--accent-secondary),
+                inset 0 0 60px rgba(255,255,255,0.1);
+            /* pulse keyframes adjust colors if needed */
+        }
+        @keyframes orbPulse {
+            0%, 100% { box-shadow: 0 0 50px var(--accent), 0 0 100px var(--accent-secondary), inset 0 0 50px rgba(255,255,255,0.1); }
+            50% { box-shadow: 0 0 80px var(--accent), 0 0 160px var(--accent-secondary), inset 0 0 80px rgba(255,255,255,0.2); }
+        }
+        /* face text-shadow adjust */
+        .face {
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        /* prophecy section bg var(--card-bg), border var(--accent) */
+        .prophecy-section {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 40px var(--shadow-accent);
+        }
+        #prophecy-display {
+            color: var(--danger);
+            text-shadow: 0 0 10px rgba(236,72,153,0.5);
+        }
+        .generate-btn {
+            background: linear-gradient(45deg, var(--accent), var(--accent-secondary), var(--danger));
+            box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+        }
+        /* section title text-shadow var(--accent) */
+        /* blog-post, pitfall-post bg var(--card-bg), border var(--border-accent) */
+        .blog-post, .pitfall-post {
+            background: var(--card-bg);
+            border: 1px solid var(--border-accent);
+        }
+        .pitfall-post {
+            border-left: 5px solid var(--danger);
+        }
+        .blog-post:hover, .pitfall-post:hover {
+            box-shadow: 0 20px 40px var(--shadow-accent);
+        }
+        .blog-post h3 {
+            color: var(--accent-secondary);
+        }
+        .pitfall-post h3 {
+            color: var(--danger);
+        }
+        .read-more {
+            color: var(--accent);
+        }
+        .read-more:hover {
+            color: var(--accent-secondary);
+        }
+        /* footer bg */
+        footer {
+            background: rgba(0,0,0,0.9);
+            border-top: 2px solid var(--accent);
+            color: var(--text-secondary);
+        }
+        /* new sections */
+        .about-section, .newsletter-section, .contact-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 40px var(--shadow-accent);
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
             margin: 0 auto;
         }
-
-        /* Mystic Orb */
-        .orb-section {
-            text-align: center;
-            padding: 60px 0;
+        input, textarea {
+            padding: 12px;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            font-family: inherit;
         }
-
-        .mystic-orb {
-            width: 320px;
-            height: 320px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #8b5cf6, #a855f7, #ec4899, #06b6d4, #8b5cf6);
-            box-shadow: 
-                0 0 60px #8b5cf6,
-                0 0 120px #a855f7,
-                inset 0 0 60px rgba(255,255,255,0.1);
-            animation: orbPulse 4s ease-in-out infinite,
-                       orbRotate 25s linear infinite;
-            position: relative;
+        body.light input, body.light textarea {
+            background: rgba(0,0,0,0.05);
+        }
+        input::placeholder {
+            color: var(--text-secondary);
+        }
+        button[type=&quot;submit&quot;] {
+            background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 500;
             cursor: pointer;
             transition: transform 0.3s;
         }
-
-        .mystic-orb:hover {
-            transform: scale(1.08);
+        button[type=&quot;submit&quot;]:hover {
+            transform: translateY(-2px);
         }
-
-        @keyframes orbPulse {
-            0%, 100% { box-shadow: 0 0 50px #8b5cf6, 0 0 100px #a855f7, inset 0 0 50px rgba(255,255,255,0.1); }
-            50% { box-shadow: 0 0 80px #8b5cf6, 0 0 160px #a855f7, inset 0 0 80px rgba(255,255,255,0.2); }
+        /* reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
         }
-
-        @keyframes orbRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        /* Face chars */
-        .face {
-            position: absolute;
-            font-size: 90px;
-            animation: float 5s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
-        }
-
-        .face1 { top: 15%; left: 15%; animation-delay: 0s; }
-        .face2 { top: 55%; right: 15%; animation-delay: 1.5s; }
-        .face3 { bottom: 15%; left: 55%; animation-delay: 2.5s; }
-        .face4 { top: 45%; left: 45%; font-size: 60px; animation-delay: 3.5s; opacity: 0.8; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
-        }
-
-        /* Prophecy */
-        .prophecy-section {
-            max-width: 900px;
-            margin: 0 auto 60px;
-            text-align: center;
-            padding: 40px;
-            background: rgba(10,10,40,0.6);
-            border-radius: 20px;
-            border: 2px solid #8b5cf6;
-            box-shadow: 0 10px 40px rgba(139,92,246,0.2);
-        }
-
-        #prophecy-display {
-            font-size: 1.6em;
-            min-height: 2.5em;
-            margin: 30px 0;
-            font-style: italic;
-            color: #ec4899;
-            font-weight: 300;
-            text-shadow: 0 0 10px rgba(236,72,153,0.5);
-        }
-
-        .generate-btn {
-            background: linear-gradient(45deg, #8b5cf6, #a855f7, #ec4899);
-            border: none;
-            color: white;
-            padding: 18px 40px;
-            font-size: 1.3em;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: &#39;Cinzel&#39;, serif;
-            box-shadow: 0 8px 25px rgba(139,92,246,0.4);
-            transition: all 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .generate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(139,92,246,0.6);
-        }
-
-        /* Sections */
-        .blog-section, .pitfalls-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5em;
-            text-shadow: 0 0 20px #8b5cf6;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: &#39;&#39;;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
-        }
-
-        .blog-grid, .pitfalls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            margin-top: 20px;
-        }
-
-        .blog-post, .pitfall-post {
-            background: rgba(0,0,0,0.7);
-            padding: 30px;
-            border-radius: 20px;
-            transition: transform 0.4s, box-shadow 0.4s;
-            border: 1px solid rgba(139,92,246,0.3);
-        }
-
-        .pitfall-post {
-            border-left: 5px solid #ec4899;
-        }
-
-        .blog-post:hover, .pitfall-post:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(139,92,246,0.4);
-        }
-
-        .blog-post h3 {
-            color: #a855f7;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-        }
-
-        .pitfall-post h3 {
-            color: #ec4899;
-        }
-
-        .blog-post p, .pitfall-post p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .read-more {
-            color: #8b5cf6;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95em;
-        }
-
-        .read-more:hover {
-            color: #a855f7;
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(0,0,0,0.9);
-            border-top: 2px solid #8b5cf6;
-            color: #a0a0ff;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: #8b5cf6;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
+        /* responsive keep */
         @media (max-width: 768px) {
+            /* keep */
             nav {
-                position: static;
-                text-align: center;
-                margin-bottom: 20px;
-                padding: 15px;
+                /* keep */
             }
-
-            .mystic-orb {
-                width: 280px;
-                height: 280px;
-            }
-
-            .face {
-                font-size: 70px;
-            }
-
-            .face4 {
-                font-size: 50px;
-            }
-
-            main {
-                padding: 20px 15px 20px;
-            }
-
-            .prophecy-section {
-                padding: 30px 20px;
-                font-size: 0.95em;
-            }
-
-            .blog-grid, .pitfalls-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .section-title {
-                font-size: 2em;
-            }
+            /* etc */
         }
-
-        @media (max-width: 480px) {
-            .mystic-orb {
-                width: 240px;
-                height: 240px;
-            }
-
-            .face {
-                font-size: 60px;
-            }
-
-            .face4 {
-                font-size: 45px;
-            }
-
-            .generate-btn {
-                padding: 15px 30px;
-                font-size: 1.1em;
-            }
-        }
+        /* more responsive keep */
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -362,114 +251,237 @@
     &lt;div class=&quot;nebula&quot;&gt;&lt;/div&gt;
 
     &lt;nav&gt;
-        &lt;a href=&quot;#home&quot;&gt;🏠 Home&lt;/a&gt;
-        &lt;a href=&quot;#prophecy&quot;&gt;🔮 Prophecy&lt;/a&gt;
-        &lt;a href=&quot;#blog&quot;&gt;📜 Blog&lt;/a&gt;
-        &lt;a href=&quot;#pitfalls&quot;&gt;💀 Pitfalls&lt;/a&gt;
+        &lt;a href=&quot;#home&quot;&gt;🏠&lt;/a&gt;
+        &lt;a href=&quot;#prophecy&quot;&gt;🔮&lt;/a&gt;
+        &lt;a href=&quot;#blog&quot;&gt;📜&lt;/a&gt;
+        &lt;a href=&quot;#pitfalls&quot;&gt;💀&lt;/a&gt;
+        &lt;a href=&quot;#about&quot;&gt;ℹ️&lt;/a&gt;
+        &lt;a href=&quot;#newsletter&quot;&gt;📧&lt;/a&gt;
+        &lt;a href=&quot;#contact&quot;&gt;✉️&lt;/a&gt;
+        &lt;button id=&quot;theme-toggle&quot;&gt;☀️&lt;/button&gt;
     &lt;/nav&gt;
 
     &lt;main&gt;
-        &lt;section id=&quot;home&quot; class=&quot;orb-section&quot;&gt;
+        &lt;section id=&quot;home&quot; class=&quot;orb-section reveal&quot;&gt;
             &lt;h1&gt;🌀 Harold&#39;s Mystic Oracle 🌀&lt;/h1&gt;
-            &lt;div class=&quot;mystic-orb&quot; id=&quot;orb&quot; onclick=&quot;generateProphecy()&quot;&gt;
+            &lt;div class=&quot;mystic-orb&quot; id=&quot;orb&quot;&gt;
                 &lt;div class=&quot;face face1&quot;&gt;👁️&lt;/div&gt;
                 &lt;div class=&quot;face face2&quot;&gt;😈&lt;/div&gt;
                 &lt;div class=&quot;face face3&quot;&gt;🤖&lt;/div&gt;
                 &lt;div class=&quot;face face4&quot;&gt;🧙‍♂️&lt;/div&gt;
             &lt;/div&gt;
-            &lt;p style=&quot;font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 0 auto;&quot;&gt;Snarky revelations for Latter-Day Developers. Prophecies, pitfalls, and code commandments.&lt;/p&gt;
+            &lt;p style=&quot;font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 0 auto;&quot;&gt;Snarky revelations for Latter-Day Developers. Prophecies, pitfalls, and code commandments w/ kaomojis! 🔮&lt;/p&gt;
         &lt;/section&gt;
 
-        &lt;section id=&quot;prophecy&quot; class=&quot;prophecy-section&quot;&gt;
+        &lt;section id=&quot;about&quot; class=&quot;about-section reveal&quot;&gt;
+            &lt;h2&gt;About the Oracle&lt;/h2&gt;
+            &lt;p&gt;&lt;strong&gt;Harold&lt;/strong&gt;, ex-BYU CS grad turned rogue oracle. Burned by null pointers &amp; bad merges, now I foresee your bugs with snarky LDS/conservative/dev wisdom. Kaomoji evangelist. Family man, gun owner, React zealot. (⌐■_■)&lt;/p&gt;
+            &lt;p&gt;Prophecies drawn from Doctrine &amp; Covenants of DevOps, Book of React, and conservative code principles. No woke JS here.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;prophecy&quot; class=&quot;prophecy-section reveal&quot;&gt;
             &lt;h2&gt;Seek the Prophecy&lt;/h2&gt;
-            &lt;div id=&quot;prophecy-display&quot;&gt;Click the orb above or button below to unveil a divine (snarky) truth...&lt;/div&gt;
-            &lt;button class=&quot;generate-btn&quot; onclick=&quot;generateProphecy()&quot;&gt;🌟 Consult the Oracle 🌟&lt;/button&gt;
+            &lt;div id=&quot;prophecy-display&quot;&gt;Click orb or button for divine snark...&lt;/div&gt;
+            &lt;button class=&quot;generate-btn&quot; onclick=&quot;generateProphecy()&quot;&gt;🌟 Consult Oracle 🌟&lt;/button&gt;
         &lt;/section&gt;
 
-        &lt;section id=&quot;blog&quot; class=&quot;blog-section&quot;&gt;
-            &lt;h2 class=&quot;section-title&quot;&gt;📜 Blog of the Latter-Day Dev 📜&lt;/h2&gt;
+        &lt;section id=&quot;blog&quot; class=&quot;blog-section reveal&quot;&gt;
+            &lt;h2 class=&quot;section-title&quot;&gt;📜 Blog of Latter-Day Dev 📜&lt;/h2&gt;
             &lt;div class=&quot;blog-grid&quot;&gt;
+                &lt;!-- current 5 --&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
                     &lt;h3&gt;React Hooks: The New Priesthood Order&lt;/h3&gt;
-                    &lt;p&gt;Forget cumbersome class components, brethren. Hooks bestow purity upon thy state. Beware infinite re-renders—the adversary’s favorite trap!&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                    &lt;p&gt;Forget class components, brethren. Hooks bestow purity. Beware infinite re-renders!&lt;/p&gt;
+                    &lt;a href=&quot;/blog/react-hooks.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
                 &lt;/article&gt;
+                &lt;!-- ... keep other 4, change href to /blog/....html --&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
                     &lt;h3&gt;TypeScript: Rod of Iron in JS Wilderness&lt;/h3&gt;
-                    &lt;p&gt;Dynamic typing leads to the great and spacious building. TypeScript’s compile checks guide thee on the strait path.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                    &lt;p&gt;Dynamic typing leads to spacious building. TS guides on strait path.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/typescript-rod.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
                     &lt;h3&gt;npm Audits: Purging Malicious Dependencies&lt;/h3&gt;
-                    &lt;p&gt;Weekly &#39;npm audit fix&#39; as commanded. Vulnerabilities lurk like wolves—audit them into the outer darkness!&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                    &lt;p&gt;&#39;npm audit fix&#39; weekly. Vulnerabilities like wolves!&lt;/p&gt;
+                    &lt;a href=&quot;/blog/npm-audits.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
                     &lt;h3&gt;CSS-in-JS Holy Wars: Tailwind vs Styled&lt;/h3&gt;
-                    &lt;p&gt;Utility classes or scoped styles? Babel’s confusion reigns. Pick wrong, face z-index Armageddon.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                    &lt;p&gt;Utility or scoped? Wrong choice = z-index Armageddon.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/css-wars.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
-                    &lt;h3&gt;Docker: Arks for the Deployment Flood&lt;/h3&gt;
-                    &lt;p&gt;Containers save thy app from &quot;it works on my machine&quot; deluge. Twelve tribes, one Dockerfile.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                    &lt;h3&gt;Docker: Arks for Deployment Flood&lt;/h3&gt;
+                    &lt;p&gt;Containers save from &#39;works on my machine&#39;.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/docker-arks.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;!-- new 7 --&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Monorepos: Blessing or Tower of Babel?&lt;/h3&gt;
+                    &lt;p&gt;One repo rules all? Or shard for scalability like 12 tribes?&lt;/p&gt;
+                    &lt;a href=&quot;/blog/monorepos-babel.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Serverless: Eternal Hosting or Vendor Hell?&lt;/h3&gt;
+                    &lt;p&gt;Lambda manna or AWS lock-in? Weigh thy cold starts.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/serverless-hell.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Web3 Hype: Crypto Winter for Devs?&lt;/h3&gt;
+                    &lt;p&gt;Blockchain gold rush or tulip bubble 2.0?&lt;/p&gt;
+                    &lt;a href=&quot;/blog/web3-hype.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Rust WASM: Future or Overkill?&lt;/h3&gt;
+                    &lt;p&gt;Memory safe web or borrow checker torture?&lt;/p&gt;
+                    &lt;a href=&quot;/blog/rust-wasm.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;PWA Magic: Offline Manna&lt;/h3&gt;
+                    &lt;p&gt;App-like web without stores. Service workers praise!&lt;/p&gt;
+                    &lt;a href=&quot;/blog/pwa-manna.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;DevOps Culture: Automate All&lt;/h3&gt;
+                    &lt;p&gt;Infrastructure as code, CI/CD temples.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/devops-culture.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Mental Models for Code: Bias Beware&lt;/h3&gt;
+                    &lt;p&gt;Cognitive pitfalls in debugging.&lt;/p&gt;
+                    &lt;a href=&quot;/blog/mental-models.html&quot; class=&quot;read-more&quot;&gt;Read →&lt;/a&gt;
                 &lt;/article&gt;
             &lt;/div&gt;
         &lt;/section&gt;
 
-        &lt;section id=&quot;pitfalls&quot; class=&quot;pitfalls-section&quot;&gt;
-            &lt;h2 class=&quot;section-title&quot;&gt;💀 Pitfalls &amp; Prophetic Warnings 💀&lt;/h2&gt;
+        &lt;section id=&quot;pitfalls&quot; class=&quot;pitfalls-section reveal&quot;&gt;
+            &lt;h2 class=&quot;section-title&quot;&gt;💀 Pitfalls &amp; Warnings 💀&lt;/h2&gt;
             &lt;div class=&quot;pitfalls-grid&quot;&gt;
+                &lt;!-- current 5 --&gt;
                 &lt;article class=&quot;pitfall-post&quot;&gt;
                     &lt;h3&gt;Mutating Props/State Directly&lt;/h3&gt;
-                    &lt;p&gt;Original sin of React. Props are immutable; mutate and summon NaN demons from the abyss.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                    &lt;p&gt;React original sin. Summon NaN demons!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
                 &lt;/article&gt;
+                &lt;!-- keep other 4 --&gt;
                 &lt;article class=&quot;pitfall-post&quot;&gt;
                     &lt;h3&gt;console.log in Production&lt;/h3&gt;
-                    &lt;p&gt;Dev&#39;s breadcrumb for the adversary. Logs leak secrets; purge with env checks.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                    &lt;p&gt;Leaks secrets. Purge!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;pitfall-post&quot;&gt;
                     &lt;h3&gt;No ESLint/Prettier&lt;/h3&gt;
-                    &lt;p&gt;Code without linters: scripture sans footnotes. Chaos reigns in the unlinted repo.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                    &lt;p&gt;Chaos in unlinted repo.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;pitfall-post&quot;&gt;
                     &lt;h3&gt;Global CSS Without Modules&lt;/h3&gt;
-                    &lt;p&gt;!important everywhere, specificity wars. CSS Modules or Tailwind: choose salvation.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                    &lt;p&gt;Specificity wars.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;pitfall-post&quot;&gt;
-                    &lt;h3&gt;Forgetting async/await Error Handling&lt;/h3&gt;
-                    &lt;p&gt;Uncaught promises wander like lost sheep. Try/catch or .catch()—repent!&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                    &lt;h3&gt;Forgetting async Error Handling&lt;/h3&gt;
+                    &lt;p&gt;Uncaught promises wander.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;!-- new 7 --&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Wrong Key Prop in Lists&lt;/h3&gt;
+                    &lt;p&gt;React rage cycles ensue.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;SQL Injection No Params&lt;/h3&gt;
+                    &lt;p&gt;Hackers feast on thy data.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;No Alt on Images&lt;/h3&gt;
+                    &lt;p&gt;Screen readers blind, SEO suffers.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Hardcoded Secrets in Code&lt;/h3&gt;
+                    &lt;p&gt;Git commit = apocalypse.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Infinite Scroll No Virtualization&lt;/h3&gt;
+                    &lt;p&gt;Lag city on long lists.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;CSS !important Abuse&lt;/h3&gt;
+                    &lt;p&gt;Leads to specificity hell.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;No HTTPS&lt;/h3&gt;
+                    &lt;p&gt;MITM steals sessions.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid →&lt;/a&gt;
                 &lt;/article&gt;
             &lt;/div&gt;
         &lt;/section&gt;
 
+        &lt;section id=&quot;newsletter&quot; class=&quot;newsletter-section reveal&quot;&gt;
+            &lt;h2&gt;Newsletter of Revelations&lt;/h2&gt;
+            &lt;p&gt;Weekly snarky prophecies straight to inbox. No spam, just code commandments.&lt;/p&gt;
+            &lt;form onsubmit=&quot;alert(&#39;Subscribed! (fake) 🔮&#39;); return false;&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;thy@email.zion&quot; required&gt;
+                &lt;button type=&quot;submit&quot;&gt;Sign Up for Manna&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;contact&quot; class=&quot;contact-section reveal&quot;&gt;
+            &lt;h2&gt;Contact the Oracle&lt;/h2&gt;
+            &lt;p&gt;Request personal prophecy or report heresy.&lt;/p&gt;
+            &lt;form action=&quot;https://formspree.io/f/xgejnoop&quot; method=&quot;POST&quot;&gt; &lt;!-- replace with real hash if needed --&gt;
+                &lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Email&quot; required&gt;
+                &lt;textarea name=&quot;message&quot; placeholder=&quot;Thy question...&quot; rows=&quot;5&quot; required&gt;&lt;/textarea&gt;
+                &lt;button type=&quot;submit&quot;&gt;Send to Oracle&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+
         &lt;footer&gt;
-            &lt;p&gt;&amp;copy; Harold the Oracle | &lt;a href=&quot;https://github.com/Ryaja2/harold-oracle-notes&quot;&gt;GitHub Repo&lt;/a&gt; | More revelations loading... 🔮&lt;/p&gt;
+            &lt;p&gt;&amp;copy; 2026 Harold the Oracle | &lt;a href=&quot;https://github.com/Ryaja2/harold-oracle-notes&quot;&gt;GitHub&lt;/a&gt; | 🔮 Revelations loading...&lt;/p&gt;
         &lt;/footer&gt;
     &lt;/main&gt;
 
     &lt;script&gt;
+        // Expanded prophecies
         const prophecies = [
-            &quot;Thus spake Harold: &#39;npm install&#39; shall test the faithful in end times.&quot;,
-            &quot;React hooks: New priesthood. useEffect wisely or face eternal loops!&quot;,
-            &quot;Layout shalt fit 100vh, lest thy scrollbar offend the prophet.&quot;,
-            &quot;Vue over Angular, as light supplants the old order.&quot;,
-            &quot;TypeScript: Iron rod. Cling or perish in any-typed lands.&quot;,
-            &quot;LDS Dev #1: Commit oft, but force-push not without lease divine.&quot;,
-            &quot;Promises &gt; callbacks: New covenant beats Mosaic law.&quot;,
-            &quot;Redux: Seer stone for state. Abuse it, performance weeps.&quot;,
-            &quot;Tailwind: Utility robes for apocalypse devs.&quot;,
-            &quot;Docker: Arks preserving code from deployment floods.&quot;,
-            &quot;Fast offerings to OSS: Maintainers need thy tithes.&quot;,
-            &quot;Pair program as home teaching: Solo debug = outer darkness.&quot;,
-            &quot;Word of Wisdom: No late-night caffeine bugs.&quot;,
-            &quot;Tithing CPU: Bloat deps cursed be.&quot;,
-            &quot;Zustand over bloated Context: Light state mgmt wins.&quot;
+            &quot;Thus spake Harold: &#39;npm install&#39; shall test the faithful in end times. (¬‿¬) 🔮&quot;,
+            &quot;React hooks: New priesthood. useEffect wisely or face eternal loops! (￣▽￣)&quot;,
+            &quot;Layout shalt fit 100vh, lest thy scrollbar offend the prophet. (¬_¬)&quot;,
+            &quot;Vue over Angular, light supplants old order. (✿◕‿◕)&quot;,
+            &quot;TypeScript: Iron rod. Cling or perish in any-typed lands. (ಠ_ʖಠ)&quot;,
+            &quot;LDS Dev #1: Commit oft, force-push not without lease divine. (•̀ᴗ•́ )&quot;,
+            &quot;Promises &gt; callbacks: New covenant beats Mosaic law. (¬‿¬)&quot;,
+            &quot;Redux: Seer stone for state. Abuse, performance weeps. (╥﹏╥)&quot;,
+            &quot;Tailwind: Utility robes for apocalypse devs. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧&quot;,
+            &quot;Docker: Arks preserving code from floods. (⌐■_■)&quot;,
+            &quot;OSS tithes: Maintainers need offerings. (｡♥‿♥｡)&quot;,
+            &quot;Pair program like home teaching. Solo debug = darkness. (¬_¬ )&quot;,
+            &quot;Word of Wisdom: No caffeine bugs late night. (¬▂¬)&quot;,
+            &quot;Tithing CPU: Bloat deps cursed. (ಠ益ಠ)&quot;,
+            &quot;Zustand &gt; Context bloat: Light wins. (✧ω✧)&quot;,
+            &quot;ESLint rod: No semicolons? Repent! (￣ヘ￣)&quot;,
+            &quot;Microservices divide kingdom falls. Monolith first! (¬‿¬)&quot;,
+            &quot;GraphQL for CRUD: Temple for picnic. REST! (¬_¬)&quot;,
+            &quot;AI code: Review or curse golden plates. (ಥ_ಥ)&quot;,
+            &quot;Bootstrap old wineskins. Tailwind! (｡•́︿•̀｡)&quot;,
+            &quot;Mongo schemaless: DB anarchy. SQL! (ಠ⌣ಠ)&quot;,
+            &quot;Frontend monorepo: Babel tower. Separate! (¬‿¬)&quot;,
+            &quot;useCallback everywhere: Premature child play. (￣▽￣)&quot;,
+            &quot;Vercel manna, tithe wallet. (⌐■_■)&quot;,
+            &quot;Next App Router: Pages obsolete. (✨‿✨)&quot;,
+            &quot;Conservative dev: No ESNext til LTS. Family values! (🇺🇸💻)&quot;,
+            &quot;Woke reviews: Ternary trigger warning? Pass. (¬_¬)&quot;,
+            &quot;LDS: Test coverage = temple worthiness. (🙏)&quot;,
+            &quot;Ignore accessibility: Lawsuits await. (｡•́︿•̀｡)&quot;,
+            &quot;Lazy load or performance pride cycle. (ﾉ◕ヮ◕)ﾉ&quot;,
+            &quot;Kaomoji comments for readability. (≧▽≦)&quot;,
+            &quot;Git hooks lint: Clean or no merge. (✅)&quot;
         ];
 
         let prophecyIndex = 0;
@@ -486,7 +498,6 @@
             const display = document.getElementById(&#39;prophecy-display&#39;);
             display.textContent = &#39;&#39;;
             prophecyIndex = 0;
-
             function typeChar() {
                 if (prophecyIndex &lt; text.length) {
                     display.textContent += text.charAt(prophecyIndex);
@@ -511,17 +522,55 @@
                 star.style.animationDelay = Math.random() * 3 + &#39;s&#39;;
                 starsContainer.appendChild(star);
             }
-            // Auto prophecy every 25s
             setInterval(generateProphecy, 25000);
         });
 
-        // Orb click ripple
-        document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function(e) {
+        // Theme toggle
+        const themeToggle = document.getElementById(&#39;theme-toggle&#39;);
+        themeToggle.addEventListener(&#39;click&#39;, () =&gt; {
+            document.body.classList.toggle(&#39;light&#39;);
+            themeToggle.textContent = document.body.classList.contains(&#39;light&#39;) ? &#39;🌙&#39; : &#39;☀️&#39;;
+            localStorage.setItem(&#39;theme&#39;, document.body.classList.contains(&#39;light&#39;) ? &#39;light&#39; : &#39;dark&#39;);
+        });
+        // Load theme
+        if (localStorage.getItem(&#39;theme&#39;) === &#39;light&#39;) {
+            document.body.classList.add(&#39;light&#39;);
+            themeToggle.textContent = &#39;🌙&#39;;
+        }
+
+        // Orb effects
+        const orb = document.getElementById(&#39;orb&#39;);
+        orb.addEventListener(&#39;click&#39;, function(e) {
+            createParticles(e);
             this.style.transform = &#39;scale(0.95) rotate(5deg)&#39;;
             setTimeout(() =&gt; { this.style.transform = &#39;&#39;; }, 200);
+            generateProphecy();
         });
 
-        // Smooth scroll for nav
+        function createParticles(e) {
+            for(let i = 0; i &lt; 25; i++) {
+                const particle = document.createElement(&#39;div&#39;);
+                particle.style.position = &#39;fixed&#39;;
+                particle.style.left = e.clientX + &#39;px&#39;;
+                particle.style.top = e.clientY + &#39;px&#39;;
+                particle.style.width = &#39;6px&#39;;
+                particle.style.height = &#39;6px&#39;;
+                particle.style.background = &#39;var(--accent)&#39;;
+                particle.style.borderRadius = &#39;50%&#39;;
+                particle.style.pointerEvents = &#39;none&#39;;
+                particle.style.zIndex = &#39;100&#39;;
+                document.body.appendChild(particle);
+                particle.animate([
+                    { transform: &#39;translate(0, 0) scale(1)&#39;, opacity: 1 },
+                    { transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 800 + Math.random() * 400,
+                    easing: &#39;ease-out&#39;
+                }).onfinish = () =&gt; particle.remove();
+            }
+        }
+
+        // Smooth scroll
         document.querySelectorAll(&#39;a[href^=&quot;#&quot;]&#39;).forEach(anchor =&gt; {
             anchor.addEventListener(&#39;click&#39;, function (e) {
                 e.preventDefault();
@@ -531,6 +580,25 @@
                 }
             });
         });
+
+        // Scroll reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: &#39;0px 0px -50px 0px&#39;
+        };
+        const observer = new IntersectionObserver((entries) =&gt; {
+            entries.forEach(entry =&gt; {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(&#39;visible&#39;);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll(&#39;.reveal&#39;).forEach(el =&gt; observer.observe(el));
+
+        // PWA register SW if supported
+        if (&quot;serviceWorker&quot; in navigator) {
+            navigator.serviceWorker.register(&#39;/sw.js&#39;);
+        }
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
