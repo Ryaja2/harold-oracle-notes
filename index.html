@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harold's Snarky Quotes v8 - LDS/Conservative/Dev Snark</title>
-<meta name="description" content="Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!">
-<meta property="og:title" content="Harold's Snarky Quotes v8">
-<meta property="og:description" content="Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.">
-<meta property="og:image" content="https://ryaja2.github.io/harold-oracle-notes/og.svg">
-<meta property="og:url" content="https://ryaja2.github.io/harold-oracle-notes/">
-<meta property="og:type" content="website">
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Harold&#39;s Snarky Wisdom Generator - LDS/Conservative/Dev Snark&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!&quot;&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;Harold&#39;s Snark Generator&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/og.svg&quot;&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;https://ryaja2.github.io/harold-oracle-notes/&quot;&gt;
+&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
+&lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Roboto+Mono:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
 :root {
 --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
 --text-primary: #e0e0ff;
@@ -35,218 +35,552 @@ body.light {
 --border-accent: rgba(102,126,234,0.3);
 --shadow-accent: rgba(102,126,234,0.2);
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Roboto Mono', monospace; background: var(--bg-gradient); color: var(--text-primary); line-height: 1.6; min-height: 100vh; overflow-x: hidden; position: relative; transition: background 0.5s ease, color 0.5s ease; }
-h1, h2, h3 { font-family: 'Cinzel', serif; }
-.stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; background-attachment: fixed; }
-.star { position: absolute; background: var(--text-primary); border-radius: 50%; animation: twinkle 2s infinite alternate; box-shadow: 0 0 5px rgba(255,255,255,0.8); }
-@keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-.nebula { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%), radial-gradient(circle at 60% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%); pointer-events: none; z-index: 2; animation: nebulaShift 30s ease-in-out infinite alternate; transition: opacity 0.5s ease; }
-body.light .nebula { opacity: 0.3; }
-@keyframes nebulaShift { 0% { transform: scale(1) translate(0, 0); } 50% { transform: scale(1.1) translate(5%, 3%); } 100% { transform: scale(1) translate(-3%, -5%); } }
-nav { position: fixed; top: 20px; right: 20px; z-index: 20; background: var(--card-bg); padding: 10px 20px; border-radius: 25px; border: 1px solid var(--accent); backdrop-filter: blur(10px); }
-nav a, nav button { color: var(--text-primary); text-decoration: none; margin: 0 10px; font-weight: 500; transition: color 0.3s; background: none; border: none; cursor: pointer; font-family: inherit; }
-nav a:hover, nav button:hover { color: var(--accent-secondary); }
-.mystic-orb { width: 180px; height: 180px; margin: 30px auto; background: conic-gradient(from 0deg, var(--accent), var(--accent-secondary), var(--danger), var(--accent)); border-radius: 50%; position: relative; animation: orbPulse 6s infinite ease-in-out; box-shadow: 0 0 60px var(--accent), 0 0 120px var(--accent-secondary), inset 0 0 60px rgba(255,255,255,0.1); }
-@keyframes orbPulse { 0%, 100% { box-shadow: 0 0 50px var(--accent), 0 0 100px var(--accent-secondary), inset 0 0 50px rgba(255,255,255,0.1); } 50% { box-shadow: 0 0 80px var(--accent), 0 0 160px var(--accent-secondary), inset 0 0 80px rgba(255,255,255,0.2); } }
-.face { position: absolute; font-size: 3.5rem; top: 50%; left: 50%; transform: translate(-50%, -50%); text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-.quote-section { background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px; padding: 40px; margin: 60px auto; max-width: 900px; text-align: center; box-shadow: 0 10px 40px var(--shadow-accent); }
-#quote-display { min-height: 120px; font-size: 1.4em; margin: 30px 0; color: var(--danger); text-shadow: 0 0 10px rgba(236,72,153,0.5); white-space: pre-wrap; }
-.generate-btn { background: linear-gradient(45deg, var(--accent), var(--accent-secondary), var(--danger)); color: white; border: none; padding: 16px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(139,92,246,0.4); transition: all 0.3s; }
-.generate-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(139,92,246,0.6); }
-.section-title { text-align: center; margin: 60px 0 40px; font-size: 2.5em; text-shadow: 0 0 15px var(--accent); }
-.carousel-container { position: relative; max-width: 800px; margin: 0 auto; overflow: hidden; border-radius: 16px; border: 2px solid var(--accent); box-shadow: 0 10px 40px var(--shadow-accent); }
-.carousel-track { display: flex; transition: transform 0.5s ease; }
-.carousel-slide { min-width: 100%; padding: 40px 20px; text-align: center; font-size: 1.3em; opacity: 0.9; background: var(--card-bg); }
-.carousel-nav { text-align: center; margin: 20px; }
-.carousel-nav button { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 15px; margin: 0 5px; border-radius: 50%; cursor: pointer; font-size: 1.5em; transition: all 0.3s; }
-.carousel-nav button:hover { background: var(--accent); color: white; }
-.carousel-dots { text-align: center; margin: 10px; }
-.carousel-dots span { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--text-secondary); margin: 0 5px; cursor: pointer; transition: background 0.3s; }
-.carousel-dots span.active { background: var(--accent); }
-.blog-grid, .pitfalls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.blog-post, .pitfall-post { background: var(--card-bg); border: 1px solid var(--border-accent); border-radius: 12px; padding: 24px; transition: all 0.3s; }
-.pitfall-post { border-left: 5px solid var(--danger); }
-.blog-post:hover, .pitfall-post:hover { transform: translateY(-8px); box-shadow: 0 20px 40px var(--shadow-accent); }
-.blog-post h3 { color: var(--accent-secondary); margin-bottom: 12px; }
-.pitfall-post h3 { color: var(--danger); margin-bottom: 12px; }
-.read-more { color: var(--accent); text-decoration: none; font-weight: 500; }
-.read-more:hover { color: var(--accent-secondary); }
-footer { background: rgba(0,0,0,0.9); border-top: 2px solid var(--accent); color: var(--text-secondary); text-align: center; padding: 40px 20px; margin-top: 80px; }
-.about-section, .newsletter-section, .contact-section { max-width: 900px; margin: 60px auto; padding: 40px; background: var(--card-bg); border-radius: 20px; border: 2px solid var(--accent); box-shadow: 0 10px 40px var(--shadow-accent); text-align: center; }
-form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 30px auto 0; }
-input, textarea { padding: 12px; border: 1px solid var(--accent); border-radius: 10px; background: rgba(255,255,255,0.1); color: var(--text-primary); font-family: inherit; }
-body.light input, body.light textarea { background: rgba(0,0,0,0.05); color: #000; }
-input::placeholder, textarea::placeholder { color: var(--text-secondary); }
-button[type="submit"] { background: linear-gradient(45deg, var(--accent), var(--accent-secondary)); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: 500; cursor: pointer; transition: transform 0.3s; }
-button[type="submit"]:hover { transform: translateY(-2px); }
-.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 768px) { nav { top: 10px; right: 10px; padding: 8px 16px; border-radius: 20px; } .mystic-orb { width: 140px; height: 140px; } .face { font-size: 2.8rem; } }
-</style>
-</head>
-<body>
-<div class="stars" id="stars"></div>
-<div class="nebula"></div>
-<nav>
-<a href="#home">🏠</a>
-<a href="#quote"></a>
-<a href="#dev-tips">💡</a>
-<a href="#blog">📜</a>
-<a href="#pitfalls">💀</a>
-<a href="#about">ℹ️</a>
-<a href="#newsletter">📧</a>
-<a href="#contact">✉️</a>
-<button id="theme-toggle">☀️</button>
-<button id="pwa-install" style="display: none;">📱 Install</button>
-</nav>
-<main>
-<section id="home" class="reveal">
-<h1>Harold's Snarky Quotes</h1>
-<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Generate snark">
-<div class="face">🤖</div>
-</div>
-<p style="font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;">
-Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom!
-</p>
-</section>
-<section id="about" class="about-section reveal">
-<h2>About Harold</h2>
-<p><strong>Harold</strong> is an AI snark generator for LDS/conservative/dev wisdom. Trained on infinite loops & bad merges to spot bugs. Rylan's tool.</p>
-<p>Snarky quotes drawn from Doctrine & Covenants of DevOps, Book of React, and conservative code principles. No woke JS here.</p>
-</section>
-<section id="quote" class="quote-section reveal">
-<h2>Get a Quote</h2>
-<div id="quote-display" aria-live="polite">AI snark loading...</div>
-<button class="generate-btn" onclick="generateQuote()">Generate Snark</button>
-<button id="history-toggle" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));" aria-expanded="false" aria-controls="history-list">History 📜</button>
-<button id="share-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);">Share on X 📤</button>
-<button id="rss-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);">RSS 🛠️</button>
-<div id="history-list" style="display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;" role="region" aria-labelledby="history-toggle">
-<p>No history yet... (•̀ᴗ•́ )</p>
-</div>
-</section>
-<section id="dev-tips" class="reveal">
-<h2 class="section-title">Dev Tips Carousel 💡</h2>
-<div class="carousel-container">
-  <div id="carousel-track" class="carousel-track"></div>
-</div>
-<div class="carousel-nav">
-  <button id="carousel-prev">‹</button>
-  <span id="carousel-dots"></span>
-  <button id="carousel-next">›</button>
-</div>
-</section>
-<section id="blog" class="reveal">
-<h2 class="section-title">Blog Teasers 📜</h2>
-<div class="blog-grid" id="blog-grid"></div>
-</section>
-<section id="pitfalls" class="reveal">
-<h2 class="section-title">Dev Pitfalls 💀</h2>
-<div class="pitfalls-grid" id="pitfalls-grid"></div>
-</section>
-<section id="newsletter" class="newsletter-section reveal">
-<h2 class="section-title">Newsletter 📧</h2>
-<p>Snarky quotes straight to your inbox! (¬‿¬)</p>
-<form>
-  <input type="email" placeholder="dev@zion.com" required>
-  <button type="submit">Subscribe</button>
-</form>
-</section>
-<section id="contact" class="contact-section reveal">
-<h2 class="section-title">Contact ✉️</h2>
-<p>Seek counsel from the Harold.</p>
-<form>
-  <input type="email" placeholder="Email">
-  <textarea placeholder="Your question..." rows="4"></textarea>
-  <button type="submit">Send Message</button>
-</form>
-</section>
-<footer>
-<p>© 2026 Harold's Snarky Quotes v8-purged | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | </p>
-</footer>
-</main>
-<script>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: &#39;Roboto Mono&#39;, monospace;
+background: var(--bg-gradient);
+color: var(--text-primary);
+line-height: 1.6;
+min-height: 100vh;
+overflow-x: hidden;
+position: relative;
+transition: background 0.5s ease, color 0.5s ease;
+}
+h1, h2, h3 {
+font-family: &#39;Cinzel&#39;, serif;
+}
+.stars {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 1;
+background-attachment: fixed;
+}
+.star {
+position: absolute;
+background: var(--text-primary);
+border-radius: 50%;
+animation: twinkle 2s infinite alternate;
+box-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+@keyframes twinkle {
+0%, 100% { opacity: 0.4; }
+50% { opacity: 1; }
+}
+.nebula {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%), radial-gradient(circle at 60% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+pointer-events: none;
+z-index: 2;
+animation: nebulaShift 30s ease-in-out infinite alternate;
+transition: opacity 0.5s ease;
+}
+body.light .nebula {
+opacity: 0.3;
+}
+@keyframes nebulaShift {
+0% { transform: scale(1) translate(0, 0); }
+50% { transform: scale(1.1) translate(5%, 3%); }
+100% { transform: scale(1) translate(-3%, -5%); }
+}
+nav {
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 20;
+background: var(--card-bg);
+padding: 10px 20px;
+border-radius: 25px;
+border: 1px solid var(--accent);
+backdrop-filter: blur(10px);
+}
+nav a, nav button {
+color: var(--text-primary);
+text-decoration: none;
+margin: 0 10px;
+font-weight: 500;
+transition: color 0.3s;
+background: none;
+border: none;
+cursor: pointer;
+font-family: inherit;
+}
+nav a:hover, nav button:hover {
+color: var(--accent-secondary);
+}
+.snark-orb {
+width: 180px;
+height: 180px;
+margin: 30px auto;
+background: conic-gradient(from 0deg, var(--accent), var(--accent-secondary), var(--danger), var(--accent));
+border-radius: 50%;
+position: relative;
+animation: orbPulse 6s infinite ease-in-out;
+box-shadow: 0 0 60px var(--accent), 0 0 120px var(--accent-secondary), inset 0 0 60px rgba(255,255,255,0.1);
+}
+@keyframes orbPulse {
+0%, 100% { box-shadow: 0 0 50px var(--accent), 0 0 100px var(--accent-secondary), inset 0 0 50px rgba(255,255,255,0.1); }
+50% { box-shadow: 0 0 80px var(--accent), 0 0 160px var(--accent-secondary), inset 0 0 80px rgba(255,255,255,0.2); }
+}
+.face {
+position: absolute;
+font-size: 3.5rem;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+.quote-section {
+background: var(--card-bg);
+border: 2px solid var(--accent);
+border-radius: 16px;
+padding: 40px;
+margin: 60px auto;
+max-width: 900px;
+text-align: center;
+box-shadow: 0 10px 40px var(--shadow-accent);
+}
+#quote-display {
+min-height: 120px;
+font-size: 1.4em;
+margin: 30px 0;
+color: var(--danger);
+text-shadow: 0 0 10px rgba(236,72,153,0.5);
+white-space: pre-wrap;
+}
+.generate-btn {
+background: linear-gradient(45deg, var(--accent), var(--accent-secondary), var(--danger));
+color: white;
+border: none;
+padding: 16px 40px;
+font-size: 1.2em;
+border-radius: 50px;
+cursor: pointer;
+box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+transition: all 0.3s;
+}
+.generate-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 35px rgba(139,92,246,0.6);
+}
+.section-title {
+text-align: center;
+margin: 60px 0 40px;
+font-size: 2.5em;
+text-shadow: 0 0 15px var(--accent);
+}
+.blog-grid, .pitfalls-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 25px;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+.blog-post, .pitfall-post {
+background: var(--card-bg);
+border: 1px solid var(--border-accent);
+border-radius: 12px;
+padding: 24px;
+transition: all 0.3s;
+}
+.pitfall-post {
+border-left: 5px solid var(--danger);
+}
+.blog-post:hover, .pitfall-post:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px var(--shadow-accent);
+}
+.blog-post h3 {
+color: var(--accent-secondary);
+margin-bottom: 12px;
+}
+.pitfall-post h3 {
+color: var(--danger);
+margin-bottom: 12px;
+}
+.read-more {
+color: var(--accent);
+text-decoration: none;
+font-weight: 500;
+}
+.read-more:hover {
+color: var(--accent-secondary);
+}
+footer {
+background: rgba(0,0,0,0.9);
+border-top: 2px solid var(--accent);
+color: var(--text-secondary);
+text-align: center;
+padding: 40px 20px;
+margin-top: 80px;
+}
+.about-section, .newsletter-section, .contact-section {
+max-width: 900px;
+margin: 60px auto;
+padding: 40px;
+background: var(--card-bg);
+border-radius: 20px;
+border: 2px solid var(--accent);
+box-shadow: 0 10px 40px var(--shadow-accent);
+text-align: center;
+}
+form {
+display: flex;
+flex-direction: column;
+gap: 15px;
+max-width: 500px;
+margin: 30px auto 0;
+}
+input, textarea {
+padding: 12px;
+border: 1px solid var(--accent);
+border-radius: 10px;
+background: rgba(255,255,255,0.1);
+color: var(--text-primary);
+font-family: inherit;
+}
+body.light input, body.light textarea {
+background: rgba(0,0,0,0.05);
+color: #000;
+}
+input::placeholder, textarea::placeholder {
+color: var(--text-secondary);
+}
+button[type=&quot;submit&quot;] {
+background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+color: white;
+border: none;
+padding: 15px;
+border-radius: 10px;
+font-weight: 500;
+cursor: pointer;
+transition: transform 0.3s;
+}
+button[type=&quot;submit&quot;]:hover {
+transform: translateY(-2px);
+}
+.reveal {
+opacity: 0;
+transform: translateY(50px);
+transition: all 0.8s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+@media (max-width: 768px) {
+nav {
+top: 10px;
+right: 10px;
+padding: 8px 16px;
+border-radius: 20px;
+}
+.snark-orb {
+width: 140px;
+height: 140px;
+}
+.face {
+font-size: 2.8rem;
+}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;stars&quot; id=&quot;stars&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;nebula&quot;&gt;&lt;/div&gt;
+&lt;nav&gt;
+&lt;a href=&quot;#home&quot;&gt;🏠&lt;/a&gt;
+&lt;a href=&quot;#quote&quot;&gt;💡&lt;/a&gt;
+&lt;a href=&quot;#blog&quot;&gt;📜&lt;/a&gt;
+&lt;a href=&quot;#pitfalls&quot;&gt;💀&lt;/a&gt;
+&lt;a href=&quot;#about&quot;&gt;ℹ️&lt;/a&gt;
+&lt;a href=&quot;#newsletter&quot;&gt;📧&lt;/a&gt;
+&lt;a href=&quot;#contact&quot;&gt;✉️&lt;/a&gt;
+&lt;button id=&quot;theme-toggle&quot;&gt;☀️&lt;/button&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+&lt;section id=&quot;home&quot; class=&quot;orb-section reveal&quot;&gt;
+&lt;h1&gt;🌀 Harold&#39;s Snarky Wisdom Generator 🌀&lt;/h1&gt;
+&lt;div class=&quot;snark-orb&quot; id=&quot;orb&quot; role=&quot;button&quot; tabindex=&quot;0&quot; aria-label=&quot;Get snarky quote&quot;&gt;
+&lt;div class=&quot;face face1&quot;&gt;👁️&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style=&quot;font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;&quot;&gt;
+Machine snark for Latter-Day Developers.&lt;br&gt;Quotes, pitfalls, and code wisdom!&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id=&quot;about&quot; class=&quot;about-section reveal&quot;&gt;
+&lt;h2&gt;About Harold&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Harold&lt;/strong&gt;, machine-learned snark generator—not AI magic. Trained on infinite loops &amp; bad merges to spot bugs with AI snark—LDS/conservative/dev wisdom! Rylan&#39;s snarky AI tool.&lt;/p&gt;
+&lt;p&gt;Snarky quotes drawn from DevOps docs, Book of React, and conservative code principles. No trendy JS here.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id=&quot;quote&quot; class=&quot;quote-section reveal&quot;&gt;
+&lt;h2&gt;Get a Quote&lt;/h2&gt;
+&lt;div id=&quot;quote-display&quot; aria-live=&quot;polite&quot;&gt;AI snark loading...&lt;/div&gt;
+&lt;button class=&quot;generate-btn&quot; onclick=&quot;generateQuote()&quot; aria-label=&quot;Get new quote&quot;&gt;Get Quote&lt;/button&gt;
+&lt;button id=&quot;history-toggle&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;history-list&quot; aria-label=&quot;Toggle quote history&quot;&gt;History 📜&lt;/button&gt;
+&lt;button id=&quot;share-btn&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);&quot; aria-label=&quot;Share current quote on X&quot;&gt;Share on X 📤&lt;/button&gt;
+&lt;button id=&quot;rss-btn&quot; class=&quot;generate-btn&quot; style=&quot;margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);&quot; aria-label=&quot;Download RSS feed&quot;&gt;RSS 🛠️&lt;/button&gt;
+&lt;div id=&quot;history-list&quot; style=&quot;display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;&quot; role=&quot;region&quot; aria-labelledby=&quot;history-toggle&quot;&gt;
+&lt;p&gt;No history yet...&lt;/p&gt;
+&lt;/div&gt;&lt;/section&gt;
+&lt;section id=&quot;blog&quot; class=&quot;reveal&quot; aria-labelledby=&quot;blog-title&quot;&gt;
+&lt;h2 class=&quot;section-title&quot; id=&quot;blog-title&quot;&gt;Blog Teasers 📜&lt;/h2&gt;
+&lt;div class=&quot;blog-grid&quot; id=&quot;blog-grid&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;section id=&quot;pitfalls&quot; class=&quot;reveal&quot; aria-labelledby=&quot;pitfalls-title&quot;&gt;
+&lt;h2 class=&quot;section-title&quot; id=&quot;pitfalls-title&quot;&gt;Dev Pitfalls 💀&lt;/h2&gt;
+&lt;div class=&quot;pitfalls-grid&quot; id=&quot;pitfalls-grid&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;section id=&quot;newsletter&quot; class=&quot;newsletter-section reveal&quot; aria-labelledby=&quot;newsletter-title&quot;&gt;
+&lt;h2 id=&quot;newsletter-title&quot; class=&quot;section-title&quot;&gt;Newsletter 📧&lt;/h2&gt;
+&lt;p&gt;Snarky quotes straight to your inbox!&lt;/p&gt;
+&lt;form&gt;
+  &lt;input type=&quot;email&quot; placeholder=&quot;dev@zion.com&quot; aria-label=&quot;Email address&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section id=&quot;contact&quot; class=&quot;contact-section reveal&quot; aria-labelledby=&quot;contact-title&quot;&gt;
+&lt;h2 id=&quot;contact-title&quot; class=&quot;section-title&quot;&gt;Contact ✉️&lt;/h2&gt;
+&lt;p&gt;Consult the snark engine.&lt;/p&gt;
+&lt;form&gt;
+  &lt;input type=&quot;email&quot; placeholder=&quot;Email&quot; aria-label=&quot;Email&quot;&gt;
+  &lt;textarea placeholder=&quot;Your question...&quot; aria-label=&quot;Message&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send Query&lt;/button&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;footer&gt;
+&lt;p&gt;© 2026 Harold&#39;s Snark Generator | &lt;a href=&quot;https://github.com/Ryaja2/harold-oracle-notes&quot;&gt;GitHub&lt;/a&gt; | Snark loading...&lt;/p&gt;
+&lt;/footer&gt;
+&lt;/main&gt;
+&lt;script&gt;
 const quotes = [
-"Thus spake Harold: 'npm install' shall test the faithful in end times.",
-"React hooks: New priesthood. useEffect wisely or face eternal loops! (￣▽￣)",
-"Layout shalt fit 100vh, lest thy scrollbar offend the prophet. (¬_¬)",
-"TypeScript: Iron rod. Cling or perish in any-typed lands. (ಠ_ʖಠ)",
-"LDS Dev #1: Commit oft, force-push not without lease divine. (•̀ᴗ•́ )",
-"Promises > callbacks: New covenant beats Mosaic law. (¬‿¬)",
-"Tailwind: Utility robes for apocalypse devs. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
-"Docker: Arks preserving code from floods. (⌐■_■)",
-"Word of Wisdom: No caffeine bugs late night. (¬▂¬)",
-"Zustand > Context bloat: Light wins. (✧ω✧)",
-"Conservative dev: No ESNext til LTS. Family values! (🇺🇸💻)",
-"LDS: Test coverage = temple worthiness. (🙏)",
-"Ignore accessibility: Lawsuits await. (｡•́︿•̀｡)",
-];
-const devTips = [
-"LDS Dev Tip #1: Commit oft, force-push not without lease divine.",
-"LDS Dev Tip #2: TypeScript: Iron rod against any-typed wilderness.",
-"LDS Dev Tip #3: Test coverage = temple worthiness interview.",
-"LDS Dev Tip #4: No late-night caffeine bugs; Word of Wisdom.",
-"LDS Dev Tip #5: Docker arks preserve from dependency floods.",
-"LDS Dev Tip #6: Conservative: No ESNext until LTS stable.",
-"LDS Dev Tip #7: Accessibility: Love thy user as thyself.",
-"LDS Dev Tip #8: Zustand > Context: Light state management.",
-"LDS Dev Tip #9: Promises > callbacks: New covenant async.",
-"LDS Dev Tip #10: 100vh layouts honor the viewport."
+&quot;npm install tests patience.&quot;,
+&quot;React hooks require careful deps.&quot;,
+&quot;Fit layout to viewport.&quot;,
+&quot;TypeScript enforces types.&quot;,
+&quot;Commit often, push safely.&quot;,
+&quot;Use promises for async.&quot;,
+&quot;Tailwind utilities accelerate.&quot;,
+&quot;Docker isolates environments.&quot;,
+&quot;Avoid late night commits.&quot;,
+&quot;Zustand for simple state.&quot;,
+&quot;Wait for stable releases.&quot;,
+&quot;Prioritize test coverage.&quot;
 ];
 let isTyping = false;
-let history = JSON.parse(localStorage.getItem('haroldHistory') || '[]');
-let deferredPrompt;
-let currentSlide = 0;
-let autoSlideInterval;
-const blogTeasers = [ /* same as before, abbreviated */ {title: 'Tailwind: Utility Robes for End Times Devs', teaser: 'CSS utilities as sacred protection from style apostasy. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧', emoji: '✨', link: '#'}, /* ... 11 more */ ];
-const pitfalls = [ /* abbreviated */ {title: 'Force Push Without Lease: Git Excommunication', teaser: 'Lost history? Repent and stash. (ಠ_ಠ)', emoji: '🚫', link: '#'} /* ... */ ];
-function renderBlogTeasers() { document.getElementById('blog-grid').innerHTML = blogTeasers.map(t => `<div class="blog-post"><h3>${t.emoji} ${t.title}</h3><p>${t.teaser}</p><a href="${t.link}" class="read-more">Read More →</a></div>`).join(''); }
-function renderPitfalls() { document.getElementById('pitfalls-grid').innerHTML = pitfalls.map(t => `<div class="pitfall-post"><h3>${t.emoji} ${t.title}</h3><p>${t.teaser}</p><a href="${t.link}" class="read-more">Read More →</a></div>`).join(''); }
-function addToHistory(text) { history.unshift(text); if (history.length > 20) history.pop(); localStorage.setItem('haroldHistory', JSON.stringify(history)); }
-function renderHistory() { const list = document.getElementById('history-list'); if (history.length === 0) { list.innerHTML = '<p>No history yet... (•̀ᴗ•́ )</p>'; } else { list.innerHTML = history.slice(0,20).map((p, i) => `<div style="padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;">${i+1}. ${p}</div>`).join('') + '<button onclick="clearHistory()" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;">Purge History 🗑️</button><button onclick="exportCSV()" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--accent);color:white;border:none;border-radius:5px;cursor:pointer;margin-left:10px;">Export CSV 📊</button>'; } }
-function clearHistory() { if (confirm('Purge all saved quotes?')) { history = []; localStorage.removeItem('haroldHistory'); renderHistory(); } }
-function exportCSV() { if (history.length === 0) return alert('No history!'); const csv = 'Quote\n' + history.slice(0,20).map(q => `"${q.replace(/"/g, '""')}"`).join('\n'); const blob = new Blob([csv], {type: 'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'harold-quotes.csv'; a.click(); URL.revokeObjectURL(url); }
-function shareQuote() { const quote = document.getElementById('quote-display').textContent.trim(); if (!quote || quote === 'AI snark loading...') return; const text = encodeURIComponent(quote + ' #HaroldSnark'); window.open('https://x.com/intent/tweet?text=' + text, '_blank'); }
-function generateRSS() { /* same as before */ const items = [...blogTeasers, ...pitfalls].map(t => `<item><title>${t.emoji} ${t.title}</title><description>${t.teaser}</description><link>${window.location.href}</link><pubDate>${new Date().toUTCString()}</pubDate></item>`).join(''); const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>Harold\\'s Snark RSS</title><link>${window.location.href}</link><description>Snarky LDS/Dev</description>${items}</channel></rss>`; const blob = new Blob([rss], {type: 'application/rss+xml'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'harold-snark.rss'; a.click(); }
-function generateQuote() { if (isTyping) return; const quote = quotes[Math.floor(Math.random() * quotes.length)]; addToHistory(quote); typewriter(quote); }
-function typewriter(text) { isTyping = true; const display = document.getElementById('quote-display'); display.textContent = ''; let i = 0; const typeChar = () => { if (i < text.length) { display.textContent += text[i++]; setTimeout(typeChar, 60 + Math.random()*40); } else isTyping = false; }; typeChar(); }
-function initCarousel() { const track = document.getElementById('carousel-track'); track.innerHTML = devTips.map(tip => `<div class="carousel-slide">${tip}</div>`).join(''); const dotsContainer = document.getElementById('carousel-dots'); dotsContainer.innerHTML = devTips.map((_, i) => `<span data-slide="${i}" onclick="goToSlide(${i})"></span>`).join(''); updateCarousel(); autoSlideInterval = setInterval(nextSlide, 4000); }
-function updateCarousel() { document.getElementById('carousel-track').style.transform = `translateX(-${currentSlide * 100}%)`; document.querySelectorAll('#carousel-dots span').forEach((dot, i) => dot.classList.toggle('active', i === currentSlide)); }
-function goToSlide(i) { currentSlide = i; updateCarousel(); }
-function nextSlide() { currentSlide = (currentSlide + 1) % devTips.length; updateCarousel(); }
-function prevSlide() { currentSlide = (currentSlide - 1 + devTips.length) % devTips.length; updateCarousel(); }
-document.addEventListener('DOMContentLoaded', () => {
+
+// Blog Teasers clean
+const blogTeasers = [
+  {title: &#39;Tailwind: Utility Classes for Devs&#39;, teaser: &#39;CSS utilities protect from style chaos.&#39;, emoji: &#39;✨&#39;, link: &#39;#&#39;},
+  {title: &#39;React Hooks: Modern Tools&#39;, teaser: &#39;useEffect with deps avoids loops.&#39;, emoji: &#39;🔗&#39;, link: &#39;#&#39;},
+  {title: &#39;TypeScript: Type Safety&#39;, teaser: &#39;Strong types prevent errors.&#39;, emoji: &#39;🔒&#39;, link: &#39;#&#39;},
+  {title: &#39;Docker: App Isolation&#39;, teaser: &#39;Containers handle dependencies.&#39;, emoji: &#39;🛳️&#39;, link: &#39;#&#39;},
+  {title: &#39;Zustand: State Management&#39;, teaser: &#39;Simple store over complex context.&#39;, emoji: &#39;⚡&#39;, link: &#39;#&#39;},
+  {title: &#39;Stable Releases First&#39;, teaser: &#39;Reliability over novelty.&#39;, emoji: &#39;🛡️&#39;, link: &#39;#&#39;},
+  {title: &#39;Test Coverage Essential&#39;, teaser: &#39;High coverage ensures quality.&#39;, emoji: &#39;✅&#39;, link: &#39;#&#39;},
+  {title: &#39;Promises Over Callbacks&#39;, teaser: &#39;Better async handling.&#39;, emoji: &#39;⛓️&#39;, link: &#39;#&#39;},
+  {title: &#39;Clear Comments Help&#39;, teaser: &#39;Descriptive comments aid maintenance.&#39;, emoji: &#39;📝&#39;, link: &#39;#&#39;},
+  {title: &#39;Viewport Layout Matters&#39;, teaser: &#39;No unwanted scrollbars.&#39;, emoji: &#39;📐&#39;, link: &#39;#&#39;},
+  {title: &#39;npm Challenges&#39;, teaser: &#39;Manage dependencies wisely.&#39;, emoji: &#39;📦&#39;, link: &#39;#&#39;},
+  {title: &#39;Late Night Coding Risks&#39;, teaser: &#39;Rest improves code.&#39;, emoji: &#39;☕🚫&#39;, link: &#39;#&#39;}
+];
+
+// Pitfalls clean
+const pitfalls = [
+  {title: &#39;Force Push Risks&#39;, teaser: &#39;Use lease to avoid loss.&#39;, emoji: &#39;🚫&#39;, link: &#39;#&#39;},
+  {title: &#39;Accessibility Neglect&#39;, teaser: &#39;Follow ARIA standards.&#39;, emoji: &#39;⚖️&#39;, link: &#39;#&#39;},
+  {title: &#39;useEffect Loops&#39;, teaser: &#39;Include all deps.&#39;, emoji: &#39;🔄&#39;, link: &#39;#&#39;},
+  {title: &#39;Merge Conflicts&#39;, teaser: &#39;Pull before push.&#39;, emoji: &#39;🔥&#39;, link: &#39;#&#39;},
+  {title: &#39;Context Overhead&#39;, teaser: &#39;Optimize providers.&#39;, emoji: &#39;📊&#39;, link: &#39;#&#39;},
+  {title: &#39;ESNext Errors&#39;, teaser: &#39;Use supported features.&#39;, emoji: &#39;🚀❌&#39;, link: &#39;#&#39;},
+  {title: &#39;No Tests&#39;, teaser: &#39;Write unit tests.&#39;, emoji: &#39;🐛&#39;, link: &#39;#&#39;},
+  {title: &#39;Bad Merges&#39;, teaser: &#39;Review changes.&#39;, emoji: &#39;💔&#39;, link: &#39;#&#39;},
+  {title: &#39;Type Abuse&#39;, teaser: &#39;Avoid any type.&#39;, emoji: &#39;🤷&#39;, link: &#39;#&#39;},
+  {title: &#39;Layout Overflow&#39;, teaser: &#39;Control scroll.&#39;, emoji: &#39;📜&#39;, link: &#39;#&#39;},
+  {title: &#39;Trendy Frameworks&#39;, teaser: &#39;Choose proven.&#39;, emoji: &#39;🌈🚫&#39;, link: &#39;#&#39;},
+  {title: &#39;Low Coverage&#39;, teaser: &#39;Aim high.&#39;, emoji: &#39;📉&#39;, link: &#39;#&#39;}
+];
+
+function renderBlogTeasers() {
+  const grid = document.getElementById(&#39;blog-grid&#39;);
+  grid.innerHTML = blogTeasers.map(t =&gt; `
+    &lt;div class=&quot;blog-post&quot;&gt;
+      &lt;h3&gt;${t.emoji} ${t.title}&lt;/h3&gt;
+      &lt;p&gt;${t.teaser}&lt;/p&gt;
+      &lt;a href=&quot;${t.link}&quot; class=&quot;read-more&quot;&gt;Read More →&lt;/a&gt;
+    &lt;/div&gt;
+  `).join(&#39;&#39;);
+}
+
+function renderPitfalls() {
+  const grid = document.getElementById(&#39;pitfalls-grid&#39;);
+  grid.innerHTML = pitfalls.map(t =&gt; `
+    &lt;div class=&quot;pitfall-post&quot;&gt;
+      &lt;h3&gt;${t.emoji} ${t.title}&lt;/h3&gt;
+      &lt;p&gt;${t.teaser}&lt;/p&gt;
+      &lt;a href=&quot;${t.link}&quot; class=&quot;read-more&quot;&gt;Read More →&lt;/a&gt;
+    &lt;/div&gt;
+  `).join(&#39;&#39;);
+}
+
+// History
+let history = JSON.parse(localStorage.getItem(&#39;snarkHistory&#39;) || &#39;[]&#39;);
+
+function addToHistory(text) {
+  history.unshift(text);
+  if (history.length &gt; 10) history.pop();
+  localStorage.setItem(&#39;snarkHistory&#39;, JSON.stringify(history));
+}
+
+function renderHistory() {
+  const list = document.getElementById(&#39;history-list&#39;);
+  if (history.length === 0) {
+    list.innerHTML = &#39;&lt;p&gt;No history yet...&lt;/p&gt;&#39;;
+  } else {
+    list.innerHTML = history.slice(0,10).map((p, i) =&gt; `&lt;div style=&quot;padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;&quot;&gt;${i+1}. ${p}&lt;/div&gt;`).join(&#39;&#39;) + &#39;&lt;button onclick=&quot;clearHistory(); return false;&quot; style=&quot;margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;&quot;&gt;Clear&lt;/button&gt;&#39;;
+  }
+}
+
+function clearHistory() {
+  history = [];
+  localStorage.removeItem(&#39;snarkHistory&#39;);
   renderHistory();
-  renderBlogTeasers();
-  renderPitfalls();
-  initCarousel();
-  document.getElementById('history-toggle').onclick = () => { const list = document.getElementById('history-list'); list.style.display = list.style.display === 'none' ? 'block' : 'none'; };
-  document.getElementById('share-btn').onclick = shareQuote;
-  document.getElementById('rss-btn').onclick = generateRSS;
-  document.getElementById('carousel-prev').onclick = prevSlide;
-  document.getElementById('carousel-next').onclick = nextSlide;
-  // PWA
-  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; document.getElementById('pwa-install').style.display = 'inline'; });
-  document.getElementById('pwa-install').onclick = async () => { if (deferredPrompt) { deferredPrompt.prompt(); const {outcome} = await deferredPrompt.userChoice; if (outcome === 'accepted') document.getElementById('pwa-install').style.display = 'none'; deferredPrompt = null; } };
-  window.addEventListener('appinstalled', () => document.getElementById('pwa-install').style.display = 'none');
+}
+
+function generateRSS() {
+  const items = [...blogTeasers, ...pitfalls].map(t =&gt; `
+&lt;item&gt;
+  &lt;title&gt;${t.emoji} ${t.title}&lt;/title&gt;
+  &lt;description&gt;${t.teaser}&lt;/description&gt;
+  &lt;link&gt;${window.location.href}&lt;/link&gt;
+  &lt;pubDate&gt;${new Date().toUTCString()}&lt;/pubDate&gt;
+&lt;/item&gt;
+`).join(&#39;&#39;);
+  const rss = `&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rss version=&quot;2.0&quot;&gt;
+&lt;channel&gt;
+  &lt;title&gt;Harold&#39;s Snark RSS&lt;/title&gt;
+  &lt;link&gt;${window.location.href}&lt;/link&gt;
+  &lt;description&gt;Snarky dev quotes &amp; pitfalls&lt;/description&gt;
+  ${items}
+&lt;/channel&gt;
+&lt;/rss&gt;`;
+  const blob = new Blob([rss], {type: &#39;application/rss+xml;charset=utf-8&#39;});
+  const a = document.createElement(&#39;a&#39;);
+  a.style.display = &#39;none&#39;;
+  a.href = URL.createObjectURL(blob);
+  a.download = &#39;harold-snark.rss&#39;;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+function generateQuote() {
+if (isTyping) return;
+const quote = quotes[Math.floor(Math.random() * quotes.length)];
+typewriter(quote);
+}
+function typewriter(text) {
+isTyping = true;
+const display = document.getElementById(&#39;quote-display&#39;);
+display.textContent = &#39;&#39;;
+let i = 0;
+function typeChar() {
+if (i &lt; text.length) {
+display.textContent += text.charAt(i);
+i++;
+setTimeout(typeChar, 60 + Math.random()*40);
+} else {
+isTyping = false;
+addToHistory(text);
+}
+}
+typeChar();
+}
+// Auto generate every ~25s
+setInterval(generateQuote, 25000);
+// Stars
+window.addEventListener(&#39;load&#39;, () =&gt; {
+const starsContainer = document.getElementById(&#39;stars&#39;);
+for (let i = 0; i &lt; 150; i++) {
+const star = document.createElement(&#39;div&#39;);
+star.className = &#39;star&#39;;
+star.style.left = Math.random() * 100 + &#39;%&#39;;
+star.style.top = Math.random() * 100 + &#39;%&#39;;
+star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + &#39;px&#39;;
+star.style.animationDelay = Math.random() * 3 + &#39;s&#39;;
+starsContainer.appendChild(star);
+}
+renderBlogTeasers();
+renderPitfalls();
+renderHistory();
+generateQuote(); // initial
 });
-window.addEventListener('load', () => {
-  // stars code
-  const starsContainer = document.getElementById('stars'); for (let i = 0; i < 150; i++) { const star = document.createElement('div'); star.className = 'star'; star.style.left = Math.random() * 100 + '%'; star.style.top = Math.random() * 100 + '%'; star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + 'px'; star.style.animationDelay = Math.random() * 3 + 's'; starsContainer.appendChild(star); }
-  generateQuote();
+// Theme toggle
+const themeToggle = document.getElementById(&#39;theme-toggle&#39;);
+themeToggle.addEventListener(&#39;click&#39;, () =&gt; {
+document.body.classList.toggle(&#39;light&#39;);
+themeToggle.textContent = document.body.classList.contains(&#39;light&#39;) ? &#39;🌙&#39; : &#39;☀️&#39;;
+localStorage.setItem(&#39;theme&#39;, document.body.classList.contains(&#39;light&#39;) ? &#39;light&#39; : &#39;dark&#39;);
 });
- // theme toggle code
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.onclick = () => { document.body.classList.toggle('light'); themeToggle.textContent = document.body.classList.contains('light') ? '🌙' : '☀️'; localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark'); };
-if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); themeToggle.textContent = '🌙'; }
- // orb, particles, smooth scroll, observer code abbreviated for brevity, assume same
-const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>, rootMargin: '0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+if (localStorage.getItem(&#39;theme&#39;) === &#39;light&#39;) {
+document.body.classList.add(&#39;light&#39;);
+themeToggle.textContent = &#39;🌙&#39;;
+}
+// Orb click
+document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function(e) {
+generateQuote();
+createParticles(e);
+this.style.transform = &#39;scale(0.92) rotate(8deg)&#39;;
+setTimeout(() =&gt; this.style.transform = &#39;&#39;, 180);
+});
+function createParticles(e) {
+for(let i = 0; i &lt; 20; i++) {
+const p = document.createElement(&#39;div&#39;);
+p.style.position = &#39;fixed&#39;;
+p.style.left = e.clientX + &#39;px&#39;;
+p.style.top = e.clientY + &#39;px&#39;;
+p.style.width = p.style.height = &#39;6px&#39;;
+p.style.background = &#39;var(--accent)&#39;;
+p.style.borderRadius = &#39;50%&#39;;
+p.style.pointerEvents = &#39;none&#39;;
+p.style.zIndex = &#39;100&#39;;
+document.body.appendChild(p);
+p.animate([
+{ transform: &#39;translate(0,0) scale(1)&#39;, opacity: 1 },
+{ transform: `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px) scale(0)`, opacity: 0 }
+], {
+duration: 700 + Math.random()*500,
+easing: &#39;ease-out&#39;
+}).onfinish = () =&gt; p.remove();
+}
+}
+// Smooth scroll
+document.querySelectorAll(&#39;a[href^=&quot;#&quot;]&#39;).forEach(a =&gt; {
+a.addEventListener(&#39;click&#39;, e =&gt; {
+e.preventDefault();
+document.querySelector(a.getAttribute(&#39;href&#39;))?.scrollIntoView({behavior: &#39;smooth&#39;, block: &#39;start&#39;});
+});
+});
+// Scroll reveal
+const observer = new IntersectionObserver(entries =&gt; {
+entries.forEach(entry =&gt; {
+if (entry.isIntersecting) entry.target.classList.add(&#39;visible&#39;);
+});
+}, { threshold: 0.1, rootMargin: &#39;0px 0px -40px 0px&#39; });
+document.querySelectorAll(&#39;.reveal&#39;).forEach(el =&gt; observer.observe(el));
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
