@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harold's Snarky Wisdom Generator - LDS/Conservative/Dev Snark 🔮</title>
+<meta name="description" content="Snarky wisdom for Latter-Day Developers. Quotes, pitfalls, blog teasers with LDS/conservative/dev snark!">
+<meta property="og:title" content="Harold's Snarky Wisdom Generator 🔮">
+<meta property="og:description" content="Snarky LDS/conservative/dev wisdom, blog, pitfalls for developers.">
+<meta property="og:image" content="https://ryaja2.github.io/harold-oracle-notes/og.svg">
+<meta property="og:url" content="https://ryaja2.github.io/harold-oracle-notes/">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
+--text-primary: #e0e0ff;
+--text-secondary: #a0a0ff;
+--accent: #8b5cf6;
+--accent-secondary: #a855f7;
+--danger: #ec4899;
+--card-bg: rgba(10,10,40,0.6);
+--border-accent: rgba(139,92,246,0.3);
+--shadow-accent: rgba(139,92,246,0.2);
+}
+body.light {
+--bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #ffffff 100%);
+--text-primary: #2d3748;
+--text-secondary: #4a5568;
+--accent: #667eea;
+--accent-secondary: #764ba2;
+--danger: #e53e3e;
+--card-bg: rgba(255,255,255,0.9);
+--border-accent: rgba(102,126,234,0.3);
+--shadow-accent: rgba(102,126,234,0.2);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Roboto Mono', monospace;
+background: var(--bg-gradient);
+color: var(--text-primary);
+line-height: 1.6;
+min-height: 100vh;
+overflow-x: hidden;
+position: relative;
+transition: background 0.5s ease, color 0.5s ease;
+}
+h1, h2, h3 {
+font-family: 'Cinzel', serif;
+}
+.stars {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 1;
+background-attachment: fixed;
+}
+.star {
+position: absolute;
+background: var(--text-primary);
+border-radius: 50%;
+animation: twinkle 2s infinite alternate;
+box-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+@keyframes twinkle {
+0%, 100% { opacity: 0.4; }
+50% { opacity: 1; }
+}
+.nebula {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%), radial-gradient(circle at 60% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+pointer-events: none;
+z-index: 2;
+animation: nebulaShift 30s ease-in-out infinite alternate;
+transition: opacity 0.5s ease;
+}
+body.light .nebula {
+opacity: 0.3;
+}
+@keyframes nebulaShift {
+0% { transform: scale(1) translate(0, 0); }
+50% { transform: scale(1.1) translate(5%, 3%); }
+100% { transform: scale(1) translate(-3%, -5%); }
+}
+nav {
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 20;
+background: var(--card-bg);
+padding: 10px 20px;
+border-radius: 25px;
+border: 1px solid var(--accent);
+backdrop-filter: blur(10px);
+}
+nav a, nav button {
+color: var(--text-primary);
+text-decoration: none;
+margin: 0 10px;
+font-weight: 500;
+transition: color 0.3s;
+background: none;
+border: none;
+cursor: pointer;
+font-family: inherit;
+}
+nav a:hover, nav button:hover {
+color: var(--accent-secondary);
+}
+.mystic-orb {
+width: 180px;
+height: 180px;
+margin: 30px auto;
+background: conic-gradient(from 0deg, var(--accent), var(--accent-secondary), var(--danger), var(--accent));
+border-radius: 50%;
+position: relative;
+animation: orbPulse 6s infinite ease-in-out;
+box-shadow: 0 0 60px var(--accent), 0 0 120px var(--accent-secondary), inset 0 0 60px rgba(255,255,255,0.1);
+}
+@keyframes orbPulse {
+0%, 100% { box-shadow: 0 0 50px var(--accent), 0 0 100px var(--accent-secondary), inset 0 0 50px rgba(255,255,255,0.1); }
+50% { box-shadow: 0 0 80px var(--accent), 0 0 160px var(--accent-secondary), inset 0 0 80px rgba(255,255,255,0.2); }
+}
+.face {
+position: absolute;
+font-size: 3.5rem;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+.quote-section {
+background: var(--card-bg);
+border: 2px solid var(--accent);
+border-radius: 16px;
+padding: 40px;
+margin: 60px auto;
+max-width: 900px;
+text-align: center;
+box-shadow: 0 10px 40px var(--shadow-accent);
+}
+#quote-display {
+min-height: 120px;
+font-size: 1.4em;
+margin: 30px 0;
+color: var(--danger);
+text-shadow: 0 0 10px rgba(236,72,153,0.5);
+white-space: pre-wrap;
+}
+.generate-btn {
+background: linear-gradient(45deg, var(--accent), var(--accent-secondary), var(--danger));
+color: white;
+border: none;
+padding: 16px 40px;
+font-size: 1.2em;
+border-radius: 50px;
+cursor: pointer;
+box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+transition: all 0.3s;
+}
+.generate-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 35px rgba(139,92,246,0.6);
+}
+.section-title {
+text-align: center;
+margin: 60px 0 40px;
+font-size: 2.5em;
+text-shadow: 0 0 15px var(--accent);
+}
+.blog-grid, .pitfalls-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 25px;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+.blog-post, .pitfall-post {
+background: var(--card-bg);
+border: 1px solid var(--border-accent);
+border-radius: 12px;
+padding: 24px;
+transition: all 0.3s;
+}
+.pitfall-post {
+border-left: 5px solid var(--danger);
+}
+.blog-post:hover, .pitfall-post:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px var(--shadow-accent);
+}
+.blog-post h3 {
+color: var(--accent-secondary);
+margin-bottom: 12px;
+}
+.pitfall-post h3 {
+color: var(--danger);
+margin-bottom: 12px;
+}
+.read-more {
+color: var(--accent);
+text-decoration: none;
+font-weight: 500;
+}
+.read-more:hover {
+color: var(--accent-secondary);
+}
+footer {
+background: rgba(0,0,0,0.9);
+border-top: 2px solid var(--accent);
+color: var(--text-secondary);
+text-align: center;
+padding: 40px 20px;
+margin-top: 80px;
+}
+.about-section, .newsletter-section, .contact-section {
+max-width: 900px;
+margin: 60px auto;
+padding: 40px;
+background: var(--card-bg);
+border-radius: 20px;
+border: 2px solid var(--accent);
+box-shadow: 0 10px 40px var(--shadow-accent);
+text-align: center;
+}
+form {
+display: flex;
+flex-direction: column;
+gap: 15px;
+max-width: 500px;
+margin: 30px auto 0;
+}
+input, textarea {
+padding: 12px;
+border: 1px solid var(--accent);
+border-radius: 10px;
+background: rgba(255,255,255,0.1);
+color: var(--text-primary);
+font-family: inherit;
+}
+body.light input, body.light textarea {
+background: rgba(0,0,0,0.05);
+color: #000;
+}
+input::placeholder, textarea::placeholder {
+color: var(--text-secondary);
+}
+button[type="submit"] {
+background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+color: white;
+border: none;
+padding: 15px;
+border-radius: 10px;
+font-weight: 500;
+cursor: pointer;
+transition: transform 0.3s;
+}
+button[type="submit"]:hover {
+transform: translateY(-2px);
+}
+.reveal {
+opacity: 0;
+transform: translateY(50px);
+transition: all 0.8s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+@media (max-width: 768px) {
+nav {
+top: 10px;
+right: 10px;
+padding: 8px 16px;
+border-radius: 20px;
+}
+.mystic-orb {
+width: 140px;
+height: 140px;
+}
+.face {
+font-size: 2.8rem;
+}
+}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="nebula"></div>
+<nav>
+<a href="#home">🏠</a>
+<a href="#quote">🔮</a>
+<a href="#blog">📜</a>
+<a href="#pitfalls">💀</a>
+<a href="#about">ℹ️</a>
+<a href="#newsletter">📧</a>
+<a href="#contact">✉️</a>
+<button id="theme-toggle">☀️</button>
+</nav>
+<main>
+<section id="home" class="orb-section reveal">
+<h1>🌀 Harold's Snarky Wisdom Generator 🌀</h1>
+<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Get snarky quote">
+<div class="face face1">👁️</div>
+</div>
+<p style="font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;">
+Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom! 🔮
+</p>
+</section>
+<section id="about" class="about-section reveal">
+<h2>About Harold</h2>
+<p><strong>Harold</strong>, machine-learned snark generator—not ensouled revelations. Trained on infinite loops & bad merges to spot bugs with AI snark—LDS/conservative/dev wisdom! Rylan's snarky AI tool. (⌐■_■)</p>
+<p>Snarky quotes drawn from Doctrine & Covenants of DevOps, Book of React, and conservative code principles. No woke JS here.</p>
+</section>
+<section id="quote" class="quote-section reveal">
+<h2>Get a Quote</h2>
+<div id="quote-display" aria-live="polite">AI snark loading...</div>
+<button class="generate-btn" onclick="generateQuote()" aria-label="Get new quote">Get Quote</button>
+<button id="history-toggle" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));" aria-expanded="false" aria-controls="history-list" aria-label="Toggle quote history">History 📜</button>
+<button id="share-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);" aria-label="Share current quote on X">Share on X 📤</button>
+<button id="rss-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);" aria-label="Download RSS feed">RSS 🛠️</button>
+<div id="history-list" style="display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;" role="region" aria-labelledby="history-toggle">
+<p>No history yet... (•̀ᴗ•́ )</p>
+</div></section>
+<section id="blog" class="reveal" aria-labelledby="blog-title">
+<h2 class="section-title" id="blog-title">Blog Teasers 📜</h2>
+<div class="blog-grid" id="blog-grid"></div>
+</section>
+<section id="pitfalls" class="reveal" aria-labelledby="pitfalls-title">
+<h2 class="section-title" id="pitfalls-title">Dev Pitfalls 💀</h2>
+<div class="pitfalls-grid" id="pitfalls-grid"></div>
+</section>
+<section id="newsletter" class="newsletter-section reveal" aria-labelledby="newsletter-title">
+<h2 id="newsletter-title" class="section-title">Newsletter 📧</h2>
+<p>Snarky quotes straight to your inbox! (¬‿¬)</p>
+<form>
+  <input type="email" placeholder="dev@zion.com" aria-label="Email address" required>
+  <button type="submit">Subscribe (⌐■_■)</button>
+</form>
+</section>
+<section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
+<h2 id="contact-title" class="section-title">Contact ✉️</h2>
+<p>Seek counsel from the oracle.</p>
+<form>
+  <input type="email" placeholder="Email" aria-label="Email">
+  <textarea placeholder="Thy question... 🔮" aria-label="Message" rows="4"></textarea>
+  <button type="submit">Send Revelation Request</button>
+</form>
+</section>
+<footer>
+<p>© 2026 Harold's Snark Generator | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮 Snark loading...</p>
+</footer>
+</main>
+<script>
+const quotes = [
+"Thus spake Harold: 'npm install' shall test the faithful in end times. (¬‿¬) 🔮",
+"React hooks: New priesthood. useEffect wisely or face eternal loops! (￣▽￣)",
+"Layout shalt fit 100vh, lest thy scrollbar offend the prophet. (¬_¬)",
+"TypeScript: Iron rod. Cling or perish in any-typed lands. (ಠ_ʖಠ)",
+"LDS Dev #1: Commit oft, force-push not without lease divine. (•̀ᴗ•́ )",
+"Promises > callbacks: New covenant beats Mosaic law. (¬‿¬)",
+"Tailwind: Utility robes for apocalypse devs. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+"Docker: Arks preserving code from floods. (⌐■_■)",
+"Word of Wisdom: No caffeine bugs late night. (¬▂¬)",
+"Zustand > Context bloat: Light wins. (✧ω✧)",
+"Conservative dev: No ESNext til LTS. Family values! (🇺🇸💻)",
+"LDS: Test coverage = temple worthiness. (🙏)",
+"Ignore accessibility: Lawsuits await. (｡•́︿•̀｡)",
+];
+let prophecyIndex = 0;
+let isTyping = false;
+
+// Blog Teasers (12 w/ LDS/dev snark)
+const blogTeasers = [
+  {title: 'Tailwind: Utility Robes for End Times Devs', teaser: 'CSS utilities as sacred protection from style apostasy. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧', emoji: '✨', link: '#'},
+  {title: 'React Hooks: New Priesthood Order', teaser: 'useEffect with deps or eternal re-render hell! (￣▽￣)', emoji: '🔗', link: '#'},
+  {title: 'TypeScript: The Iron Rod of Typing', teaser: 'Hold fast or wander in any-typed wilderness. (ಠ_ʖಠ)', emoji: '🔒', link: '#'},
+  {title: 'Docker: Arks for Code Floods', teaser: 'Preserve thy containers from dependency deluge. (⌐■_■)', emoji: '🛳️', link: '#'},
+  {title: 'Zustand: Light State Management', teaser: 'Simple store beats Context bloat - missionary work! (✧ω✧)', emoji: '⚡', link: '#'},
+  {title: 'No ESNext Until LTS: Conservative Values', teaser: 'Family first, stable releases only. (🇺🇸💻)', emoji: '🛡️', link: '#'},
+  {title: 'Test Coverage = Temple Recommend', teaser: '90%+ or no celestial kingdom for thy code. (🙏)', emoji: '✅', link: '#'},
+  {title: 'Promises: New Covenant Over Mosaic Callbacks', teaser: 'Async awaits the faithful. (¬‿¬)', emoji: '⛓️', link: '#'},
+  {title: 'Kaomoji Comments for Readability', teaser: 'Emote thy code intent. (≧▽≦)', emoji: '(^_^)', link: '#'},
+  {title: '100vh Layout: Honor the Viewport', teaser: 'No scrollbar idolatry. (¬_¬)', emoji: '📐', link: '#'},
+  {title: 'npm install: Trials of Faith', teaser: 'node_modules shall test thee. (¬‿¬)', emoji: '📦', link: '#'},
+  {title: 'Word of Wisdom: Avoid Late Night Bugs', teaser: 'No caffeine-fueled commits. (¬▂¬)', emoji: '☕🚫', link: '#'}
+];
+
+// Pitfalls (12 w/ snark)
+const pitfalls = [
+  {title: 'Force Push Without Lease: Git Excommunication', teaser: 'Lost history? Repent and stash. (ಠ_ಠ)', emoji: '🚫', link: '#'},
+  {title: 'Ignore ARIA: Lawsuit Judgment Day', teaser: 'Accessibility sins bring ADA wrath. (｡•́︿•̀｡)', emoji: '⚖️', link: '#'},
+  {title: 'Infinite useEffect Loops', teaser: 'Missing deps = demonic recursion. (😵‍💫)', emoji: '🔄', link: '#'},
+  {title: 'No git pull: Merge Hell Realm', teaser: 'Conflicts devour the unprepared. (¬﹏¬)', emoji: '🔥', link: '#'},
+  {title: 'Context Provider Bloat', teaser: 'Heavy tree sins slow thy render. (⚖️)', emoji: '📊', link: '#'},
+  {title: 'ESNext Runtime Crashes', teaser: 'Bleeding edge cuts deep. (💥)', emoji: '🚀❌', link: '#'},
+  {title: 'Skip Unit Tests: Prod Damnation', teaser: 'Bugs in wild = unpardonable. (😈)', emoji: '🐛', link: '#'},
+  {title: 'Bad Merge Commits', teaser: 'Harold burned by these. (🔥)', emoji: '💔', link: '#'},
+  {title: 'any Type Abuse', teaser: 'TS powerless against ignorance. (¯\\_(ツ)_/¯)', emoji: '🤷', link: '#'},
+  {title: 'Overflow Scrollbars', teaser: 'Offend the prophet viewport. (👎)', emoji: '📜', link: '#'},
+  {title: 'Woke JS Fads', teaser: 'Reject trendy heresies. (🚫)', emoji: '🌈🚫', link: '#'},
+  {title: 'Low Test Coverage', teaser: 'Unworthy code status. (❌)', emoji: '📉', link: '#'}
+];
+
+function renderBlogTeasers() {
+  const grid = document.getElementById('blog-grid');
+  grid.innerHTML = blogTeasers.map(t => `
+    <div class="blog-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
+}
+
+function renderPitfalls() {
+  const grid = document.getElementById('pitfalls-grid');
+  grid.innerHTML = pitfalls.map(t => `
+    <div class="pitfall-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
+}
+
+// History
+let history = JSON.parse(localStorage.getItem('haroldHistory') || '[]');
+
+function addToHistory(text) {
+  history.unshift(text);
+  if (history.length > 10) history.pop();
+  localStorage.setItem('haroldHistory', JSON.stringify(history));
+}
+
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  if (history.length === 0) {
+    list.innerHTML = '<p>No history yet... (•̀ᴗ•́ )</p>';
+  } else {
+    list.innerHTML = history.slice(0,10).map((p, i) => `<div style="padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;">${i+1}. ${p}</div>`).join('') + '<button onclick="clearHistory(); return false;" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;">Clear 🗑️</button>';
+  }
+}
+
+function clearHistory() {
+  history = [];
+  localStorage.removeItem('haroldHistory');
+  renderHistory();
+}
+
+function generateRSS() {
+  const items = [...blogTeasers, ...pitfalls].map(t => `
+<item>
+  <title>${t.emoji} ${t.title}</title>
+  <description>${t.teaser}</description>
+  <link>${window.location.href}</link>
+  <pubDate>${new Date().toUTCString()}</pubDate>
+</item>
+`).join('');
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Harold's Oracle RSS</title>
+  <link>${window.location.href}</link>
+  <description>Snarky LDS/Dev prophecies & pitfalls</description>
+  ${items}
+</channel>
+</rss>`;
+  const blob = new Blob([rss], {type: 'application/rss+xml;charset=utf-8'});
+  const a = document.createElement('a');
+  a.style.display = 'none';
+  a.href = URL.createObjectURL(blob);
+  a.download = 'harold-oracle.rss';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+function generateQuote() {
+if (isTyping) return;
+const quote = quotes[Math.floor(Math.random() * quotes.length)];
+typewriter(quote);
+}
+function typewriter(text) {
+isTyping = true;
+const display = document.getElementById('quote-display');
+display.textContent = '';
+let i = 0;
+function typeChar() {
+if (i < text.length) {
+display.textContent += text.charAt(i);
+i++;
+setTimeout(typeChar, 60 + Math.random()*40);
+} else {
+isTyping = false;
+}
+}
+typeChar();
+}
+// Auto prophecy every ~25s
+setInterval(generateQuote, 25000);
+// Stars
+window.addEventListener('load', () => {
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 150; i++) {
+const star = document.createElement('div');
+star.className = 'star';
+star.style.left = Math.random() * 100 + '%';
+star.style.top = Math.random() * 100 + '%';
+star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + 'px';
+star.style.animationDelay = Math.random() * 3 + 's';
+starsContainer.appendChild(star);
+}
+generateQuote(); // initial one
+});
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+document.body.classList.toggle('light');
+themeToggle.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+});
+if (localStorage.getItem('theme') === 'light') {
+document.body.classList.add('light');
+themeToggle.textContent = '🌙';
+}
+// Orb click
+document.getElementById('orb').addEventListener('click', function(e) {
+generateQuote();
+createParticles(e);
+this.style.transform = 'scale(0.92) rotate(8deg)';
+setTimeout(() => this.style.transform = '', 180);
+});
+function createParticles(e) {
+for(let i = 0; i < 20; i++) {
+const p = document.createElement('div');
+p.style.position = 'fixed';
+p.style.left = e.clientX + 'px';
+p.style.top = e.clientY + 'px';
+p.style.width = p.style.height = '6px';
+p.style.background = 'var(--accent)';
+p.style.borderRadius = '50%';
+p.style.pointerEvents = 'none';
+p.style.zIndex = '100';
+document.body.appendChild(p);
+p.animate([
+{ transform: 'translate(0,0) scale(1)', opacity: 1 },
+{ transform: `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px) scale(0)`, opacity: 0 }
+], {
+duration: 700 + Math.random()*500,
+easing: 'ease-out'
+}).onfinish = () => p.remove();
+}
+}
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
+e.preventDefault();
+document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior: 'smooth', block: 'start'});
+});
+});
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) entry.target.classList.add('visible');
+});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

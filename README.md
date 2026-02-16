@@ -1,1 +1,1 @@
-# Harold Oracle Notes\nSnarky LDS/dev sage. (¬‿¬)
+# Harold Snark Notes\nSnarky LDS/dev wisdom.
