@@ -1,0 +1,382 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Harold&#39;s Oracle - Snarky LDS/Dev Prophecies&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: &#39;Courier New&#39;, monospace;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
+            color: #e0e0ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Nebula glow */
+        .nebula {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 2;
+            animation: nebulaShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes nebulaShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10px, -10px); }
+        }
+
+        main {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Mystic Orb */
+        .orb-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .mystic-orb {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #8b5cf6, #a855f7, #ec4899, #8b5cf6);
+            box-shadow: 
+                0 0 50px #8b5cf6,
+                0 0 100px #a855f7,
+                inset 0 0 50px rgba(255,255,255,0.2);
+            animation: orbPulse 3s ease-in-out infinite,
+                       orbRotate 20s linear infinite;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .mystic-orb:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { box-shadow: 0 0 50px #8b5cf6, 0 0 100px #a855f7, inset 0 0 50px rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 0 70px #8b5cf6, 0 0 150px #a855f7, inset 0 0 70px rgba(255,255,255,0.3); }
+        }
+
+        @keyframes orbRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Face chars */
+        .face {
+            position: absolute;
+            font-size: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .face1 { top: 20%; left: 20%; animation-delay: 0s; }
+        .face2 { top: 60%; right: 20%; animation-delay: 1s; }
+        .face3 { bottom: 20%; left: 60%; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Prophecy */
+        .prophecy-section {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            border: 1px solid #8b5cf6;
+        }
+
+        #prophecy-display {
+            font-size: 1.5em;
+            min-height: 2em;
+            margin: 20px 0;
+            font-style: italic;
+            color: #a855f7;
+        }
+
+        .generate-btn {
+            background: linear-gradient(45deg, #8b5cf6, #a855f7);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 5px 15px rgba(139,92,246,0.4);
+            transition: all 0.3s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139,92,246,0.6);
+        }
+
+        /* Blog */
+        .blog-section {
+            padding: 50px 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-post {
+            background: rgba(0,0,0,0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #8b5cf6;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139,92,246,0.3);
+        }
+
+        .blog-post h3 {
+            color: #a855f7;
+            margin-bottom: 15px;
+        }
+
+        .blog-post p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mystic-orb {
+                width: 250px;
+                height: 250px;
+            }
+
+            .face {
+                font-size: 60px;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .prophecy-section {
+                font-size: 0.9em;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mystic-orb {
+                width: 200px;
+                height: 200px;
+            }
+
+            .face {
+                font-size: 50px;
+            }
+        }
+
+        /* Generate stars */
+        body::before {
+            content: &#39;&#39;;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, white, transparent),
+                radial-gradient(1px 1px at 90px 40px, #eee, transparent),
+                radial-gradient(1px 1px at 130px 80px, white, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starsMove 50s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes starsMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-200px, -100px); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;stars&quot; id=&quot;stars&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;nebula&quot;&gt;&lt;/div&gt;
+
+    &lt;main&gt;
+        &lt;section class=&quot;orb-section&quot;&gt;
+            &lt;h1 style=&quot;margin-bottom: 30px; font-size: 2.5em; text-shadow: 0 0 20px #8b5cf6;&quot;&gt;🌀 Harold&#39;s Mystic Oracle 🌀&lt;/h1&gt;
+            &lt;div class=&quot;mystic-orb&quot; id=&quot;orb&quot; onclick=&quot;generateProphecy()&quot;&gt;
+                &lt;div class=&quot;face face1&quot;&gt;👁️&lt;/div&gt;
+                &lt;div class=&quot;face face2&quot;&gt;😈&lt;/div&gt;
+                &lt;div class=&quot;face face3&quot;&gt;🤖&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;prophecy-section&quot;&gt;
+            &lt;h2 style=&quot;color: #a855f7; margin-bottom: 20px;&quot;&gt;Seek the Prophecy&lt;/h2&gt;
+            &lt;div id=&quot;prophecy-display&quot;&gt;Click the orb to reveal a snarky truth...&lt;/div&gt;
+            &lt;button class=&quot;generate-btn&quot; onclick=&quot;generateProphecy()&quot;&gt;🌟 Consult Oracle 🌟&lt;/button&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;blog-section&quot;&gt;
+            &lt;h2 style=&quot;text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 10px #8b5cf6;&quot;&gt;📜 Blog of the Latter-Day Dev 📜&lt;/h2&gt;
+            &lt;div class=&quot;blog-grid&quot;&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;React Hooks: The New Priesthood Order&lt;/h3&gt;
+                    &lt;p&gt;Forget class components, brethren. Hooks are here to bless thy state management with purity and power. But beware the infinite re-render loop – it&#39;s the adversary&#39;s snare!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;TypeScript or Bust: Rod of Iron in JS Wilderness&lt;/h3&gt;
+                    &lt;p&gt;In the valley of dynamic typing, TypeScript stands as the straight and narrow path. Compile-time checks shall save thee from runtime tribulations.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;npm Audits: Purging Evil Dependencies&lt;/h3&gt;
+                    &lt;p&gt;Run &#39;npm audit fix&#39; weekly, as the prophet commands. Vulns are like wolves among the flock – audit them out!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;CSS-in-JS: Tailwind vs Styled-Components Holy War&lt;/h3&gt;
+                    &lt;p&gt;Utility classes or component-scoped styles? The debate rages like the tower of Babel. Choose wisely, or face the z-index apocalypse.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                &lt;/article&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        const prophecies = [
+            &quot;Thus spake Harold: In the end times, &#39;npm install&#39; shall purge the unworthy from thy codebase.&quot;,
+            &quot;Lo! React hooks are the new priesthood authority. UseEffect or perish!&quot;,
+            &quot;The scroll shall not exceed 100vh, lest the prophet smite thy layout.&quot;,
+            &quot;Angular shalt thou use only if Vue hath forsaken thee.&quot;,
+            &quot;TypeScript is the rod of iron; grasp it or wander in JS wilderness.&quot;,
+            &quot;LDS Dev Commandment #1: Thou shalt commit early, commit often, but never force-push without --force-with-lease.&quot;,
+            &quot;Promises over callbacks, as the new covenant supplants the old law.&quot;,
+            &quot;Beware the global state: Redux is thy seer stone, but overkill slayeth performance.&quot;,
+            &quot;TailwindCSS: Utility-first garments for the end-time developer.&quot;,
+            &quot;Docker containers: Modern arks to float thy apps above the flood of deployment woes.&quot;
+        ];
+
+        let prophecyIndex = 0;
+        let isTyping = false;
+
+        function generateProphecy() {
+            if (isTyping) return;
+            const prophecy = prophecies[Math.floor(Math.random() * prophecies.length)];
+            typewriter(prophecy);
+        }
+
+        function typewriter(text) {
+            isTyping = true;
+            const display = document.getElementById(&#39;prophecy-display&#39;);
+            display.textContent = &#39;&#39;;
+            prophecyIndex = 0;
+
+            function typeChar() {
+                if (prophecyIndex &lt; text.length) {
+                    display.textContent += text.charAt(prophecyIndex);
+                    prophecyIndex++;
+                    setTimeout(typeChar, 80);
+                } else {
+                    isTyping = false;
+                }
+            }
+
+            typeChar();
+        }
+
+        // Generate stars on load
+        window.addEventListener(&#39;load&#39;, () => {
+            const starsContainer = document.getElementById(&#39;stars&#39;);
+            for (let i = 0; i &lt; 100; i++) {
+                const star = document.createElement(&#39;div&#39;);
+                star.className = &#39;star&#39;;
+                star.style.left = Math.random() * 100 + &#39;%&#39;;
+                star.style.top = Math.random() * 100 + &#39;%&#39;;
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + &#39;px&#39;;
+                star.style.animationDelay = Math.random() * 2 + &#39;s&#39;;
+                starsContainer.appendChild(star);
+            }
+        });
+
+        // Orb click effect
+        document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function() {
+            this.style.transform = &#39;scale(0.95)&#39;;
+            setTimeout(() => {
+                this.style.transform = &#39;&#39;;
+            }, 150);
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
