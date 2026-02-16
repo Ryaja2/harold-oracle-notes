@@ -313,7 +313,7 @@ font-size: 2.8rem;
 <main>
 <section id="home" class="orb-section reveal">
 <h1>🌀 Harold's Mystic Oracle 🌀</h1>
-<div class="mystic-orb" id="orb">
+<div class="mystic-orb" id="orb" role="button" tabindex="0" aria-label="Consult the Oracle">
 <div class="face face1">👁️</div>
 </div>
 <p style="font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 40px auto; text-align:center;">
@@ -327,10 +327,39 @@ Snarky revelations for Latter-Day Developers.<br>Prophecies, pitfalls, and code 
 </section>
 <section id="prophecy" class="prophecy-section reveal">
 <h2>Seek the Prophecy</h2>
-<div id="prophecy-display">Click orb or button for divine snark...</div>
-<button class="generate-btn" onclick="generateProphecy()">🌟 Consult Oracle 🌟</button>
+<div id="prophecy-display" aria-live="polite">Click orb or button for divine snark...</div>
+<button class="generate-btn" onclick="generateProphecy()" aria-label="Generate new prophecy">🌟 Consult Oracle 🌟</button>
+<button id="history-toggle" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent), var(--text-secondary));" aria-expanded="false" aria-controls="history-list" aria-label="Toggle prophecy history">History 📜</button>
+<button id="share-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--danger), #f59e0b);" aria-label="Share current prophecy on X">Share on X 📤</button>
+<button id="rss-btn" class="generate-btn" style="margin-top:10px; opacity:0.8; background: linear-gradient(45deg, var(--accent-secondary), #10b981);" aria-label="Download RSS feed">RSS 🛠️</button>
+<div id="history-list" style="display:none; max-height:300px; overflow-y:auto; margin-top:20px; text-align:left; background:var(--card-bg); border:1px solid var(--border-accent); border-radius:12px; padding:15px;" role="region" aria-labelledby="history-toggle">
+<p>No history yet... (•̀ᴗ•́ )</p>
+</div></section>
+<section id="blog" class="reveal" aria-labelledby="blog-title">
+<h2 class="section-title" id="blog-title">Blog Teasers 📜</h2>
+<div class="blog-grid" id="blog-grid"></div>
 </section>
-<!-- Blog, Pitfalls, Newsletter, Contact sections omitted for brevity in this response. You can copy them from your original document and they should now work correctly once the entities are unescaped and CSS/JS is valid. -->
+<section id="pitfalls" class="reveal" aria-labelledby="pitfalls-title">
+<h2 class="section-title" id="pitfalls-title">Dev Pitfalls 💀</h2>
+<div class="pitfalls-grid" id="pitfalls-grid"></div>
+</section>
+<section id="newsletter" class="newsletter-section reveal" aria-labelledby="newsletter-title">
+<h2 id="newsletter-title" class="section-title">Newsletter 📧</h2>
+<p>Snarky prophecies straight to your inbox! (¬‿¬)</p>
+<form>
+  <input type="email" placeholder="dev@zion.com" aria-label="Email address" required>
+  <button type="submit">Subscribe (⌐■_■)</button>
+</form>
+</section>
+<section id="contact" class="contact-section reveal" aria-labelledby="contact-title">
+<h2 id="contact-title" class="section-title">Contact ✉️</h2>
+<p>Seek counsel from the oracle.</p>
+<form>
+  <input type="email" placeholder="Email" aria-label="Email">
+  <textarea placeholder="Thy question... 🔮" aria-label="Message" rows="4"></textarea>
+  <button type="submit">Send Revelation Request</button>
+</form>
+</section>
 <footer>
 <p>© 2026 Harold the Oracle | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮 Revelations loading...</p>
 </footer>
@@ -354,6 +383,114 @@ const prophecies = [
 ];
 let prophecyIndex = 0;
 let isTyping = false;
+
+// Blog Teasers (12 w/ LDS/dev snark)
+const blogTeasers = [
+  {title: 'Tailwind: Utility Robes for End Times Devs', teaser: 'CSS utilities as sacred protection from style apostasy. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧', emoji: '✨', link: '#'},
+  {title: 'React Hooks: New Priesthood Order', teaser: 'useEffect with deps or eternal re-render hell! (￣▽￣)', emoji: '🔗', link: '#'},
+  {title: 'TypeScript: The Iron Rod of Typing', teaser: 'Hold fast or wander in any-typed wilderness. (ಠ_ʖಠ)', emoji: '🔒', link: '#'},
+  {title: 'Docker: Arks for Code Floods', teaser: 'Preserve thy containers from dependency deluge. (⌐■_■)', emoji: '🛳️', link: '#'},
+  {title: 'Zustand: Light State Management', teaser: 'Simple store beats Context bloat - missionary work! (✧ω✧)', emoji: '⚡', link: '#'},
+  {title: 'No ESNext Until LTS: Conservative Values', teaser: 'Family first, stable releases only. (🇺🇸💻)', emoji: '🛡️', link: '#'},
+  {title: 'Test Coverage = Temple Recommend', teaser: '90%+ or no celestial kingdom for thy code. (🙏)', emoji: '✅', link: '#'},
+  {title: 'Promises: New Covenant Over Mosaic Callbacks', teaser: 'Async awaits the faithful. (¬‿¬)', emoji: '⛓️', link: '#'},
+  {title: 'Kaomoji Comments for Readability', teaser: 'Emote thy code intent. (≧▽≦)', emoji: '(^_^)', link: '#'},
+  {title: '100vh Layout: Honor the Viewport', teaser: 'No scrollbar idolatry. (¬_¬)', emoji: '📐', link: '#'},
+  {title: 'npm install: Trials of Faith', teaser: 'node_modules shall test thee. (¬‿¬)', emoji: '📦', link: '#'},
+  {title: 'Word of Wisdom: Avoid Late Night Bugs', teaser: 'No caffeine-fueled commits. (¬▂¬)', emoji: '☕🚫', link: '#'}
+];
+
+// Pitfalls (12 w/ snark)
+const pitfalls = [
+  {title: 'Force Push Without Lease: Git Excommunication', teaser: 'Lost history? Repent and stash. (ಠ_ಠ)', emoji: '🚫', link: '#'},
+  {title: 'Ignore ARIA: Lawsuit Judgment Day', teaser: 'Accessibility sins bring ADA wrath. (｡•́︿•̀｡)', emoji: '⚖️', link: '#'},
+  {title: 'Infinite useEffect Loops', teaser: 'Missing deps = demonic recursion. (😵‍💫)', emoji: '🔄', link: '#'},
+  {title: 'No git pull: Merge Hell Realm', teaser: 'Conflicts devour the unprepared. (¬﹏¬)', emoji: '🔥', link: '#'},
+  {title: 'Context Provider Bloat', teaser: 'Heavy tree sins slow thy render. (⚖️)', emoji: '📊', link: '#'},
+  {title: 'ESNext Runtime Crashes', teaser: 'Bleeding edge cuts deep. (💥)', emoji: '🚀❌', link: '#'},
+  {title: 'Skip Unit Tests: Prod Damnation', teaser: 'Bugs in wild = unpardonable. (😈)', emoji: '🐛', link: '#'},
+  {title: 'Bad Merge Commits', teaser: 'Harold burned by these. (🔥)', emoji: '💔', link: '#'},
+  {title: 'any Type Abuse', teaser: 'TS powerless against ignorance. (¯\\_(ツ)_/¯)', emoji: '🤷', link: '#'},
+  {title: 'Overflow Scrollbars', teaser: 'Offend the prophet viewport. (👎)', emoji: '📜', link: '#'},
+  {title: 'Woke JS Fads', teaser: 'Reject trendy heresies. (🚫)', emoji: '🌈🚫', link: '#'},
+  {title: 'Low Test Coverage', teaser: 'Unworthy code status. (❌)', emoji: '📉', link: '#'}
+];
+
+function renderBlogTeasers() {
+  const grid = document.getElementById('blog-grid');
+  grid.innerHTML = blogTeasers.map(t => `
+    <div class="blog-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
+}
+
+function renderPitfalls() {
+  const grid = document.getElementById('pitfalls-grid');
+  grid.innerHTML = pitfalls.map(t => `
+    <div class="pitfall-post">
+      <h3>${t.emoji} ${t.title}</h3>
+      <p>${t.teaser}</p>
+      <a href="${t.link}" class="read-more">Read More →</a>
+    </div>
+  `).join('');
+}
+
+// History
+let history = JSON.parse(localStorage.getItem('oracleHistory') || '[]');
+
+function addToHistory(text) {
+  history.unshift(text);
+  if (history.length > 10) history.pop();
+  localStorage.setItem('oracleHistory', JSON.stringify(history));
+}
+
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  if (history.length === 0) {
+    list.innerHTML = '<p>No history yet... (•̀ᴗ•́ )</p>';
+  } else {
+    list.innerHTML = history.slice(0,10).map((p, i) => `<div style="padding:8px 0;border-bottom:1px solid var(--border-accent);font-style:italic;opacity:0.9;">${i+1}. ${p}</div>`).join('') + '<button onclick="clearHistory(); return false;" style="margin-top:10px;padding:5px 10px;font-size:0.9em;background:var(--danger);color:white;border:none;border-radius:5px;cursor:pointer;">Clear 🗑️</button>';
+  }
+}
+
+function clearHistory() {
+  history = [];
+  localStorage.removeItem('oracleHistory');
+  renderHistory();
+}
+
+function generateRSS() {
+  const items = [...blogTeasers, ...pitfalls].map(t => `
+<item>
+  <title>${t.emoji} ${t.title}</title>
+  <description>${t.teaser}</description>
+  <link>${window.location.href}</link>
+  <pubDate>${new Date().toUTCString()}</pubDate>
+</item>
+`).join('');
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Harold's Oracle RSS</title>
+  <link>${window.location.href}</link>
+  <description>Snarky LDS/Dev prophecies & pitfalls</description>
+  ${items}
+</channel>
+</rss>`;
+  const blob = new Blob([rss], {type: 'application/rss+xml;charset=utf-8'});
+  const a = document.createElement('a');
+  a.style.display = 'none';
+  a.href = URL.createObjectURL(blob);
+  a.download = 'harold-oracle.rss';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
 function generateProphecy() {
 if (isTyping) return;
 const prophecy = prophecies[Math.floor(Math.random() * prophecies.length)];
