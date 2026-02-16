@@ -90,7 +90,7 @@ button[type="submit"]:hover { transform: translateY(-2px); }
 <div class="nebula"></div>
 <nav>
 <a href="#home">🏠</a>
-<a href="#quote">🔮</a>
+<a href="#quote"></a>
 <a href="#dev-tips">💡</a>
 <a href="#blog">📜</a>
 <a href="#pitfalls">💀</a>
@@ -155,7 +155,7 @@ Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom!
 </section>
 <section id="contact" class="contact-section reveal">
 <h2 class="section-title">Contact ✉️</h2>
-<p>Seek counsel from the oracle.</p>
+<p>Seek counsel from the Harold.</p>
 <form>
   <input type="email" placeholder="Email">
   <textarea placeholder="Your question..." rows="4"></textarea>
@@ -163,7 +163,7 @@ Machine snark for Latter-Day Developers.<br>Quotes, pitfalls, and code wisdom!
 </form>
 </section>
 <footer>
-<p>© 2026 Harold's Snarky Quotes v8-purged | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | 🔮</p>
+<p>© 2026 Harold's Snarky Quotes v8-purged | <a href="https://github.com/Ryaja2/harold-oracle-notes">GitHub</a> | </p>
 </footer>
 </main>
 <script>
@@ -208,7 +208,7 @@ function renderHistory() { const list = document.getElementById('history-list');
 function clearHistory() { if (confirm('Purge all saved quotes?')) { history = []; localStorage.removeItem('haroldHistory'); renderHistory(); } }
 function exportCSV() { if (history.length === 0) return alert('No history!'); const csv = 'Quote\n' + history.slice(0,20).map(q => `"${q.replace(/"/g, '""')}"`).join('\n'); const blob = new Blob([csv], {type: 'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'harold-quotes.csv'; a.click(); URL.revokeObjectURL(url); }
 function shareQuote() { const quote = document.getElementById('quote-display').textContent.trim(); if (!quote || quote === 'AI snark loading...') return; const text = encodeURIComponent(quote + ' #HaroldSnark'); window.open('https://x.com/intent/tweet?text=' + text, '_blank'); }
-function generateRSS() { /* same as before */ const items = [...blogTeasers, ...pitfalls].map(t => `<item><title>${t.emoji} ${t.title}</title><description>${t.teaser}</description><link>${window.location.href}</link><pubDate>${new Date().toUTCString()}</pubDate></item>`).join(''); const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>Harold\\'s Oracle RSS</title><link>${window.location.href}</link><description>Snarky LDS/Dev</description>${items}</channel></rss>`; const blob = new Blob([rss], {type: 'application/rss+xml'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'harold-snark.rss'; a.click(); }
+function generateRSS() { /* same as before */ const items = [...blogTeasers, ...pitfalls].map(t => `<item><title>${t.emoji} ${t.title}</title><description>${t.teaser}</description><link>${window.location.href}</link><pubDate>${new Date().toUTCString()}</pubDate></item>`).join(''); const rss = `<?xml version="1.0"?><rss version="2.0"><channel><title>Harold\\'s Snark RSS</title><link>${window.location.href}</link><description>Snarky LDS/Dev</description>${items}</channel></rss>`; const blob = new Blob([rss], {type: 'application/rss+xml'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'harold-snark.rss'; a.click(); }
 function generateQuote() { if (isTyping) return; const quote = quotes[Math.floor(Math.random() * quotes.length)]; addToHistory(quote); typewriter(quote); }
 function typewriter(text) { isTyping = true; const display = document.getElementById('quote-display'); display.textContent = ''; let i = 0; const typeChar = () => { if (i < text.length) { display.textContent += text[i++]; setTimeout(typeChar, 60 + Math.random()*40); } else isTyping = false; }; typeChar(); }
 function initCarousel() { const track = document.getElementById('carousel-track'); track.innerHTML = devTips.map(tip => `<div class="carousel-slide">${tip}</div>`).join(''); const dotsContainer = document.getElementById('carousel-dots'); dotsContainer.innerHTML = devTips.map((_, i) => `<span data-slide="${i}" onclick="goToSlide(${i})"></span>`).join(''); updateCarousel(); autoSlideInterval = setInterval(nextSlide, 4000); }
