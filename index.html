@@ -3,7 +3,8 @@
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Harold&#39;s Oracle - Snarky LDS/Dev Prophecies&lt;/title&gt;
+    &lt;title&gt;Harold&#39;s Oracle - Snarky LDS/Dev Prophecies &amp; Pitfalls&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&amp;family=Roboto+Mono:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
     &lt;style&gt;
         * {
             margin: 0;
@@ -12,12 +13,17 @@
         }
 
         body {
-            font-family: &#39;Courier New&#39;, monospace;
+            font-family: &#39;Roboto Mono&#39;, monospace;
             background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000 100%);
             color: #e0e0ff;
+            line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+        }
+
+        h1, h2, h3 {
+            font-family: &#39;Cinzel&#39;, serif;
         }
 
         /* Stars */
@@ -36,6 +42,7 @@
             background: white;
             border-radius: 50%;
             animation: twinkle 2s infinite alternate;
+            box-shadow: 0 0 5px rgba(255,255,255,0.8);
         }
 
         @keyframes twinkle {
@@ -50,23 +57,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: 2;
-            animation: nebulaShift 20s ease-in-out infinite alternate;
+            animation: nebulaShift 30s ease-in-out infinite alternate;
         }
 
         @keyframes nebulaShift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(10px, -10px); }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20px, -20px) scale(1.02); }
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #8b5cf6;
+        }
+
+        nav a {
+            color: #e0e0ff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a855f7;
         }
 
         main {
             position: relative;
             z-index: 10;
-            padding: 20px;
+            padding: 80px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -74,33 +107,33 @@
         /* Mystic Orb */
         .orb-section {
             text-align: center;
-            padding: 50px 0;
+            padding: 60px 0;
         }
 
         .mystic-orb {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 30px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #8b5cf6, #a855f7, #ec4899, #8b5cf6);
+            background: conic-gradient(from 0deg, #8b5cf6, #a855f7, #ec4899, #06b6d4, #8b5cf6);
             box-shadow: 
-                0 0 50px #8b5cf6,
-                0 0 100px #a855f7,
-                inset 0 0 50px rgba(255,255,255,0.2);
-            animation: orbPulse 3s ease-in-out infinite,
-                       orbRotate 20s linear infinite;
+                0 0 60px #8b5cf6,
+                0 0 120px #a855f7,
+                inset 0 0 60px rgba(255,255,255,0.1);
+            animation: orbPulse 4s ease-in-out infinite,
+                       orbRotate 25s linear infinite;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
         .mystic-orb:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         @keyframes orbPulse {
-            0%, 100% { box-shadow: 0 0 50px #8b5cf6, 0 0 100px #a855f7, inset 0 0 50px rgba(255,255,255,0.2); }
-            50% { box-shadow: 0 0 70px #8b5cf6, 0 0 150px #a855f7, inset 0 0 70px rgba(255,255,255,0.3); }
+            0%, 100% { box-shadow: 0 0 50px #8b5cf6, 0 0 100px #a855f7, inset 0 0 50px rgba(255,255,255,0.1); }
+            50% { box-shadow: 0 0 80px #8b5cf6, 0 0 160px #a855f7, inset 0 0 80px rgba(255,255,255,0.2); }
         }
 
         @keyframes orbRotate {
@@ -111,159 +144,216 @@
         /* Face chars */
         .face {
             position: absolute;
-            font-size: 80px;
-            animation: float 4s ease-in-out infinite;
+            font-size: 90px;
+            animation: float 5s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
         }
 
-        .face1 { top: 20%; left: 20%; animation-delay: 0s; }
-        .face2 { top: 60%; right: 20%; animation-delay: 1s; }
-        .face3 { bottom: 20%; left: 60%; animation-delay: 2s; }
+        .face1 { top: 15%; left: 15%; animation-delay: 0s; }
+        .face2 { top: 55%; right: 15%; animation-delay: 1.5s; }
+        .face3 { bottom: 15%; left: 55%; animation-delay: 2.5s; }
+        .face4 { top: 45%; left: 45%; font-size: 60px; animation-delay: 3.5s; opacity: 0.8; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
         }
 
         /* Prophecy */
         .prophecy-section {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 900px;
+            margin: 0 auto 60px;
             text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-            border: 1px solid #8b5cf6;
+            padding: 40px;
+            background: rgba(10,10,40,0.6);
+            border-radius: 20px;
+            border: 2px solid #8b5cf6;
+            box-shadow: 0 10px 40px rgba(139,92,246,0.2);
         }
 
         #prophecy-display {
-            font-size: 1.5em;
-            min-height: 2em;
-            margin: 20px 0;
+            font-size: 1.6em;
+            min-height: 2.5em;
+            margin: 30px 0;
             font-style: italic;
-            color: #a855f7;
+            color: #ec4899;
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(236,72,153,0.5);
         }
 
         .generate-btn {
-            background: linear-gradient(45deg, #8b5cf6, #a855f7);
+            background: linear-gradient(45deg, #8b5cf6, #a855f7, #ec4899);
             border: none;
             color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 25px;
+            padding: 18px 40px;
+            font-size: 1.3em;
+            border-radius: 30px;
             cursor: pointer;
-            font-family: inherit;
-            box-shadow: 0 5px 15px rgba(139,92,246,0.4);
-            transition: all 0.3s;
+            font-family: &#39;Cinzel&#39;, serif;
+            box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+            transition: all 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(139,92,246,0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139,92,246,0.6);
         }
 
-        /* Blog */
-        .blog-section {
-            padding: 50px 0;
+        /* Sections */
+        .blog-section, .pitfalls-section {
+            padding: 60px 0;
         }
 
-        .blog-grid {
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px #8b5cf6;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: &#39;&#39;;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+        }
+
+        .blog-grid, .pitfalls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
         }
 
-        .blog-post {
-            background: rgba(0,0,0,0.6);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid #8b5cf6;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .blog-post, .pitfall-post {
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 1px solid rgba(139,92,246,0.3);
         }
 
-        .blog-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(139,92,246,0.3);
+        .pitfall-post {
+            border-left: 5px solid #ec4899;
+        }
+
+        .blog-post:hover, .pitfall-post:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139,92,246,0.4);
         }
 
         .blog-post h3 {
             color: #a855f7;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
         }
 
-        .blog-post p {
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .pitfall-post h3 {
+            color: #ec4899;
+        }
+
+        .blog-post p, .pitfall-post p {
+            margin-bottom: 25px;
+            opacity: 0.9;
         }
 
         .read-more {
             color: #8b5cf6;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 0.95em;
         }
 
         .read-more:hover {
+            color: #a855f7;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.9);
+            border-top: 2px solid #8b5cf6;
+            color: #a0a0ff;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
             text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+                padding: 15px;
+            }
+
             .mystic-orb {
-                width: 250px;
-                height: 250px;
+                width: 280px;
+                height: 280px;
+            }
+
+            .face {
+                font-size: 70px;
+            }
+
+            .face4 {
+                font-size: 50px;
+            }
+
+            main {
+                padding: 20px 15px 20px;
+            }
+
+            .prophecy-section {
+                padding: 30px 20px;
+                font-size: 0.95em;
+            }
+
+            .blog-grid, .pitfalls-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mystic-orb {
+                width: 240px;
+                height: 240px;
             }
 
             .face {
                 font-size: 60px;
             }
 
-            main {
-                padding: 10px;
+            .face4 {
+                font-size: 45px;
             }
 
-            .prophecy-section {
-                font-size: 0.9em;
+            .generate-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
             }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .mystic-orb {
-                width: 200px;
-                height: 200px;
-            }
-
-            .face {
-                font-size: 50px;
-            }
-        }
-
-        /* Generate stars */
-        body::before {
-            content: &#39;&#39;;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, white, transparent),
-                radial-gradient(1px 1px at 90px 40px, #eee, transparent),
-                radial-gradient(1px 1px at 130px 80px, white, transparent);
-            background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: starsMove 50s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes starsMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-200px, -100px); }
         }
     &lt;/style&gt;
 &lt;/head&gt;
@@ -271,61 +361,115 @@
     &lt;div class=&quot;stars&quot; id=&quot;stars&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;nebula&quot;&gt;&lt;/div&gt;
 
+    &lt;nav&gt;
+        &lt;a href=&quot;#home&quot;&gt;🏠 Home&lt;/a&gt;
+        &lt;a href=&quot;#prophecy&quot;&gt;🔮 Prophecy&lt;/a&gt;
+        &lt;a href=&quot;#blog&quot;&gt;📜 Blog&lt;/a&gt;
+        &lt;a href=&quot;#pitfalls&quot;&gt;💀 Pitfalls&lt;/a&gt;
+    &lt;/nav&gt;
+
     &lt;main&gt;
-        &lt;section class=&quot;orb-section&quot;&gt;
-            &lt;h1 style=&quot;margin-bottom: 30px; font-size: 2.5em; text-shadow: 0 0 20px #8b5cf6;&quot;&gt;🌀 Harold&#39;s Mystic Oracle 🌀&lt;/h1&gt;
+        &lt;section id=&quot;home&quot; class=&quot;orb-section&quot;&gt;
+            &lt;h1&gt;🌀 Harold&#39;s Mystic Oracle 🌀&lt;/h1&gt;
             &lt;div class=&quot;mystic-orb&quot; id=&quot;orb&quot; onclick=&quot;generateProphecy()&quot;&gt;
                 &lt;div class=&quot;face face1&quot;&gt;👁️&lt;/div&gt;
                 &lt;div class=&quot;face face2&quot;&gt;😈&lt;/div&gt;
                 &lt;div class=&quot;face face3&quot;&gt;🤖&lt;/div&gt;
+                &lt;div class=&quot;face face4&quot;&gt;🧙‍♂️&lt;/div&gt;
             &lt;/div&gt;
+            &lt;p style=&quot;font-size: 1.2em; opacity: 0.8; max-width: 600px; margin: 0 auto;&quot;&gt;Snarky revelations for Latter-Day Developers. Prophecies, pitfalls, and code commandments.&lt;/p&gt;
         &lt;/section&gt;
 
-        &lt;section class=&quot;prophecy-section&quot;&gt;
-            &lt;h2 style=&quot;color: #a855f7; margin-bottom: 20px;&quot;&gt;Seek the Prophecy&lt;/h2&gt;
-            &lt;div id=&quot;prophecy-display&quot;&gt;Click the orb to reveal a snarky truth...&lt;/div&gt;
-            &lt;button class=&quot;generate-btn&quot; onclick=&quot;generateProphecy()&quot;&gt;🌟 Consult Oracle 🌟&lt;/button&gt;
+        &lt;section id=&quot;prophecy&quot; class=&quot;prophecy-section&quot;&gt;
+            &lt;h2&gt;Seek the Prophecy&lt;/h2&gt;
+            &lt;div id=&quot;prophecy-display&quot;&gt;Click the orb above or button below to unveil a divine (snarky) truth...&lt;/div&gt;
+            &lt;button class=&quot;generate-btn&quot; onclick=&quot;generateProphecy()&quot;&gt;🌟 Consult the Oracle 🌟&lt;/button&gt;
         &lt;/section&gt;
 
-        &lt;section class=&quot;blog-section&quot;&gt;
-            &lt;h2 style=&quot;text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 10px #8b5cf6;&quot;&gt;📜 Blog of the Latter-Day Dev 📜&lt;/h2&gt;
+        &lt;section id=&quot;blog&quot; class=&quot;blog-section&quot;&gt;
+            &lt;h2 class=&quot;section-title&quot;&gt;📜 Blog of the Latter-Day Dev 📜&lt;/h2&gt;
             &lt;div class=&quot;blog-grid&quot;&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
                     &lt;h3&gt;React Hooks: The New Priesthood Order&lt;/h3&gt;
-                    &lt;p&gt;Forget class components, brethren. Hooks are here to bless thy state management with purity and power. But beware the infinite re-render loop – it&#39;s the adversary&#39;s snare!&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                    &lt;p&gt;Forget cumbersome class components, brethren. Hooks bestow purity upon thy state. Beware infinite re-renders—the adversary’s favorite trap!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
-                    &lt;h3&gt;TypeScript or Bust: Rod of Iron in JS Wilderness&lt;/h3&gt;
-                    &lt;p&gt;In the valley of dynamic typing, TypeScript stands as the straight and narrow path. Compile-time checks shall save thee from runtime tribulations.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                    &lt;h3&gt;TypeScript: Rod of Iron in JS Wilderness&lt;/h3&gt;
+                    &lt;p&gt;Dynamic typing leads to the great and spacious building. TypeScript’s compile checks guide thee on the strait path.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
-                    &lt;h3&gt;npm Audits: Purging Evil Dependencies&lt;/h3&gt;
-                    &lt;p&gt;Run &#39;npm audit fix&#39; weekly, as the prophet commands. Vulns are like wolves among the flock – audit them out!&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                    &lt;h3&gt;npm Audits: Purging Malicious Dependencies&lt;/h3&gt;
+                    &lt;p&gt;Weekly &#39;npm audit fix&#39; as commanded. Vulnerabilities lurk like wolves—audit them into the outer darkness!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
                 &lt;/article&gt;
                 &lt;article class=&quot;blog-post&quot;&gt;
-                    &lt;h3&gt;CSS-in-JS: Tailwind vs Styled-Components Holy War&lt;/h3&gt;
-                    &lt;p&gt;Utility classes or component-scoped styles? The debate rages like the tower of Babel. Choose wisely, or face the z-index apocalypse.&lt;/p&gt;
-                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read the Revelation →&lt;/a&gt;
+                    &lt;h3&gt;CSS-in-JS Holy Wars: Tailwind vs Styled&lt;/h3&gt;
+                    &lt;p&gt;Utility classes or scoped styles? Babel’s confusion reigns. Pick wrong, face z-index Armageddon.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;blog-post&quot;&gt;
+                    &lt;h3&gt;Docker: Arks for the Deployment Flood&lt;/h3&gt;
+                    &lt;p&gt;Containers save thy app from &quot;it works on my machine&quot; deluge. Twelve tribes, one Dockerfile.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Read Revelation →&lt;/a&gt;
                 &lt;/article&gt;
             &lt;/div&gt;
         &lt;/section&gt;
+
+        &lt;section id=&quot;pitfalls&quot; class=&quot;pitfalls-section&quot;&gt;
+            &lt;h2 class=&quot;section-title&quot;&gt;💀 Pitfalls &amp; Prophetic Warnings 💀&lt;/h2&gt;
+            &lt;div class=&quot;pitfalls-grid&quot;&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Mutating Props/State Directly&lt;/h3&gt;
+                    &lt;p&gt;Original sin of React. Props are immutable; mutate and summon NaN demons from the abyss.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;console.log in Production&lt;/h3&gt;
+                    &lt;p&gt;Dev&#39;s breadcrumb for the adversary. Logs leak secrets; purge with env checks.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;No ESLint/Prettier&lt;/h3&gt;
+                    &lt;p&gt;Code without linters: scripture sans footnotes. Chaos reigns in the unlinted repo.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Global CSS Without Modules&lt;/h3&gt;
+                    &lt;p&gt;!important everywhere, specificity wars. CSS Modules or Tailwind: choose salvation.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;pitfall-post&quot;&gt;
+                    &lt;h3&gt;Forgetting async/await Error Handling&lt;/h3&gt;
+                    &lt;p&gt;Uncaught promises wander like lost sheep. Try/catch or .catch()—repent!&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;read-more&quot;&gt;Avoid the Pitfall →&lt;/a&gt;
+                &lt;/article&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;footer&gt;
+            &lt;p&gt;&amp;copy; Harold the Oracle | &lt;a href=&quot;https://github.com/Ryaja2/harold-oracle-notes&quot;&gt;GitHub Repo&lt;/a&gt; | More revelations loading... 🔮&lt;/p&gt;
+        &lt;/footer&gt;
     &lt;/main&gt;
 
     &lt;script&gt;
         const prophecies = [
-            &quot;Thus spake Harold: In the end times, &#39;npm install&#39; shall purge the unworthy from thy codebase.&quot;,
-            &quot;Lo! React hooks are the new priesthood authority. UseEffect or perish!&quot;,
-            &quot;The scroll shall not exceed 100vh, lest the prophet smite thy layout.&quot;,
-            &quot;Angular shalt thou use only if Vue hath forsaken thee.&quot;,
-            &quot;TypeScript is the rod of iron; grasp it or wander in JS wilderness.&quot;,
-            &quot;LDS Dev Commandment #1: Thou shalt commit early, commit often, but never force-push without --force-with-lease.&quot;,
-            &quot;Promises over callbacks, as the new covenant supplants the old law.&quot;,
-            &quot;Beware the global state: Redux is thy seer stone, but overkill slayeth performance.&quot;,
-            &quot;TailwindCSS: Utility-first garments for the end-time developer.&quot;,
-            &quot;Docker containers: Modern arks to float thy apps above the flood of deployment woes.&quot;
+            &quot;Thus spake Harold: &#39;npm install&#39; shall test the faithful in end times.&quot;,
+            &quot;React hooks: New priesthood. useEffect wisely or face eternal loops!&quot;,
+            &quot;Layout shalt fit 100vh, lest thy scrollbar offend the prophet.&quot;,
+            &quot;Vue over Angular, as light supplants the old order.&quot;,
+            &quot;TypeScript: Iron rod. Cling or perish in any-typed lands.&quot;,
+            &quot;LDS Dev #1: Commit oft, but force-push not without lease divine.&quot;,
+            &quot;Promises &gt; callbacks: New covenant beats Mosaic law.&quot;,
+            &quot;Redux: Seer stone for state. Abuse it, performance weeps.&quot;,
+            &quot;Tailwind: Utility robes for apocalypse devs.&quot;,
+            &quot;Docker: Arks preserving code from deployment floods.&quot;,
+            &quot;Fast offerings to OSS: Maintainers need thy tithes.&quot;,
+            &quot;Pair program as home teaching: Solo debug = outer darkness.&quot;,
+            &quot;Word of Wisdom: No late-night caffeine bugs.&quot;,
+            &quot;Tithing CPU: Bloat deps cursed be.&quot;,
+            &quot;Zustand over bloated Context: Light state mgmt wins.&quot;
         ];
 
         let prophecyIndex = 0;
@@ -347,35 +491,45 @@
                 if (prophecyIndex &lt; text.length) {
                     display.textContent += text.charAt(prophecyIndex);
                     prophecyIndex++;
-                    setTimeout(typeChar, 80);
+                    setTimeout(typeChar, 60 + Math.random()*40);
                 } else {
                     isTyping = false;
                 }
             }
-
             typeChar();
         }
 
-        // Generate stars on load
-        window.addEventListener(&#39;load&#39;, () => {
+        // Stars
+        window.addEventListener(&#39;load&#39;, () =&gt; {
             const starsContainer = document.getElementById(&#39;stars&#39;);
-            for (let i = 0; i &lt; 100; i++) {
+            for (let i = 0; i &lt; 150; i++) {
                 const star = document.createElement(&#39;div&#39;);
                 star.className = &#39;star&#39;;
                 star.style.left = Math.random() * 100 + &#39;%&#39;;
                 star.style.top = Math.random() * 100 + &#39;%&#39;;
-                star.style.width = star.style.height = (Math.random() * 3 + 1) + &#39;px&#39;;
-                star.style.animationDelay = Math.random() * 2 + &#39;s&#39;;
+                star.style.width = star.style.height = (Math.random() * 2.5 + 0.5) + &#39;px&#39;;
+                star.style.animationDelay = Math.random() * 3 + &#39;s&#39;;
                 starsContainer.appendChild(star);
             }
+            // Auto prophecy every 25s
+            setInterval(generateProphecy, 25000);
         });
 
-        // Orb click effect
-        document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function() {
-            this.style.transform = &#39;scale(0.95)&#39;;
-            setTimeout(() => {
-                this.style.transform = &#39;&#39;;
-            }, 150);
+        // Orb click ripple
+        document.getElementById(&#39;orb&#39;).addEventListener(&#39;click&#39;, function(e) {
+            this.style.transform = &#39;scale(0.95) rotate(5deg)&#39;;
+            setTimeout(() =&gt; { this.style.transform = &#39;&#39;; }, 200);
+        });
+
+        // Smooth scroll for nav
+        document.querySelectorAll(&#39;a[href^=&quot;#&quot;]&#39;).forEach(anchor =&gt; {
+            anchor.addEventListener(&#39;click&#39;, function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute(&#39;href&#39;));
+                if (target) {
+                    target.scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;start&#39; });
+                }
+            });
         });
     &lt;/script&gt;
 &lt;/body&gt;
